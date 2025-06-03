@@ -36,4 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const year = new Date().getFullYear();
     footer.innerHTML = `&copy; ${year} Qhelani Moyo. All rights reserved.`;
   }
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> fbe854fb32275844e996da3b2107c3f89d06b0c1
