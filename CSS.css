@@ -583,6 +583,17 @@ body {
   }
 }
 
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 90px;
+  }
+  .profile-img {
+    width: 110px;
+    height: 110px;
+    margin-top: 16px;
+  }
+}
+
 @media (max-width: 480px) {
   .container {
     padding: 0 15px;
