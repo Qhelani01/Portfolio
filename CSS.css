@@ -618,6 +618,13 @@ body {
   }
 }
 
+/*Safari’s handling of position: fixed and viewport units (vh) can differ from Chrome. Add extra top padding to the .hero section specifically for Safari/iOS */
+@media not all and (min-resolution:.001dpcm) { @supports (-webkit-touch-callout: none) {
+  .hero {
+    padding-top: 110px !important;
+  }
+}}
+
 /* ===== SCROLL ANIMATIONS ===== */
 .reveal {
   opacity: 0;
