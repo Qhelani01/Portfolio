@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Adventures | Qhelani Moyo</title>
+    <link rel="stylesheet" href="CSS.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Photography Blog Specific Styles */
+        .blog-hero {
+            background: linear-gradient(135deg, #8B7355 0%, #A0522D 50%, #D2691E 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .blog-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .blog-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .back-to-portfolio {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .back-to-portfolio:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .blog-content {
+            padding: 80px 0;
+            background: var(--bg-primary);
+        }
+
+        .blog-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            padding: 0 20px;
+        }
+
+        .blog-intro h2 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .blog-intro p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .blog-post {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .blog-post:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-color);
+        }
+
+        .blog-post-image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+        }
+
+        .blog-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-post:hover .blog-post-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-post-content {
+            padding: 2rem;
+        }
+
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .blog-post-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-post-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-post-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-post-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--accent-hover);
+            transform: translateX(5px);
+        }
+
+        .blog-cta {
+            text-align: center;
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+            margin-top: 4rem;
+        }
+
+        .blog-cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .blog-cta h3 {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .blog-cta p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-blog {
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-blog-primary {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .btn-blog-primary:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-blog-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-blog-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .roller-img {
+            object-position: center 60%;
+        }
+
+        .golden-gate-img {
+            object-position: center 30%;
+        }
+
+        .seattle-img {
+            object-position: 40% center;
+        }
+
+        .quail-img {
+            object-position: center 85%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .blog-hero p {
+                font-size: 1rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .blog-post-content {
+                padding: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-blog {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">QM</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#photography" class="nav-link">Photography</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="blog-hero-content">
+            <h1>Photography Adventures</h1>
+            <p>Stories behind the lens, moments captured in time, and the beauty of nature through my eyes.</p>
+            <a href="index.html" class="back-to-portfolio">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="blog-intro">
+            <h2>Through My Lens</h2>
+            <p>Every photograph tells a story. Here are the deeper narratives behind my favorite shots, the adventures that led to them, and the moments that made them special.</p>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Blog Post 1 -->
+            <article class="blog-post">
+                <div class="blog-post-image">
+                    <img src="photos/seattle-sunset.jpg" alt="Seattle Sunset" class="seattle-img">
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-meta">
+                        <span class="blog-post-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Seattle, WA
+                        </span>
+                        <span class="blog-post-date">
+                            <i class="fas fa-calendar"></i>
+                            Recent Travel
+                        </span>
+                    </div>
+                    <h3 class="blog-post-title">Golden Hour Magic in the Emerald City</h3>
+                    <p class="blog-post-excerpt">
+                        There's something magical about Seattle during golden hour. The way the light reflects off the glass buildings and paints the sky in warm hues creates a scene that's both urban and ethereal. This particular evening, I found myself on a rooftop overlooking the city, camera in hand, waiting for that perfect moment when the sun would kiss the horizon...
+                    </p>
+                    <a href="#" class="read-more">
+                        Read Full Story
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Blog Post 2 -->
+            <article class="blog-post">
+                <div class="blog-post-image">
+                    <img src="photos/golden-gate.jpg" alt="Golden Gate Bridge" class="golden-gate-img">
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-meta">
+                        <span class="blog-post-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            San Francisco, CA
+                        </span>
+                        <span class="blog-post-date">
+                            <i class="fas fa-calendar"></i>
+                            Recent Travel
+                        </span>
+                    </div>
+                    <h3 class="blog-post-title">The Iconic Golden Gate Through the Fog</h3>
+                    <p class="blog-post-excerpt">
+                        San Francisco's famous fog rolled in just as I arrived at the Golden Gate Bridge viewpoint. What started as a disappointment turned into one of my most dramatic shots. The fog created this mysterious atmosphere, with the bridge's iconic orange-red color contrasting beautifully against the misty backdrop. It was a reminder that sometimes the best photos come from unexpected conditions...
+                    </p>
+                    <a href="#" class="read-more">
+                        Read Full Story
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Blog Post 3 -->
+            <article class="blog-post">
+                <div class="blog-post-image">
+                    <img src="photos/roller.jpg" alt="Lilac-breasted Roller" class="roller-img">
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-meta">
+                        <span class="blog-post-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Chobe National Park, Botswana
+                        </span>
+                        <span class="blog-post-date">
+                            <i class="fas fa-calendar"></i>
+                            Recent Travel
+                        </span>
+                    </div>
+                    <h3 class="blog-post-title">Lilac-breasted Roller: Colors of Chobe</h3>
+                    <p class="blog-post-excerpt">
+                        Caught this Lilac‑breasted Roller perched between flights in Chobe National Park. Its brilliant plumage—turquoise, lilac, and emerald—lit up against the warm savanna tones. I waited quietly for the split second when it settled, letting the soft afternoon light reveal every color.
+                    </p>
+                    <a href="#" class="read-more">
+                        Read Full Story
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Blog Post 4 -->
+            <article class="blog-post">
+                <div class="blog-post-image">
+                    <img src="photos/california-quail.jpg" alt="California Quail" class="quail-img">
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-meta">
+                        <span class="blog-post-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Point Reyes, CA
+                        </span>
+                        <span class="blog-post-date">
+                            <i class="fas fa-calendar"></i>
+                            Recent Hike
+                        </span>
+                    </div>
+                    <h3 class="blog-post-title">A Quiet Encounter with California's State Bird</h3>
+                    <p class="blog-post-excerpt">
+                        Wildlife photography requires patience and respect. This beautiful California Quail was spotted during a peaceful hike in Point Reyes, completely unaware of my presence. These birds are known for their distinctive topknot and gentle nature. It was a magical moment watching this little bird go about its day, and I felt privileged to capture such an intimate moment in nature...
+                    </p>
+                    <a href="#" class="read-more">
+                        Read Full Story
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Blog Post 5 -->
+            <article class="blog-post">
+                <div class="blog-post-image">
+                    <img src="photos/ellie.jpg" alt="Elephant Walking">
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-meta">
+                        <span class="blog-post-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Victoria Falls, Zimbabwe
+                        </span>
+                        <span class="blog-post-date">
+                            <i class="fas fa-calendar"></i>
+                            Recent Travel
+                        </span>
+                    </div>
+                    <h3 class="blog-post-title">The Gentle Giant of Victoria Falls</h3>
+                    <p class="blog-post-excerpt">
+                        This magnificent elephant was casually walking down the road in Victoria Falls, Zimbabwe. It was incredible to witness such a powerful animal moving with such grace and confidence through the landscape. The way it carried itself, completely at home in its environment, was a reminder of the beauty and majesty of African wildlife. These moments remind us of our connection to the natural world...
+                    </p>
+                    <a href="#" class="read-more">
+                        Read Full Story
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Blog Post 6 -->
+            <article class="blog-post">
+                <div class="blog-post-image">
+                    <img src="photos/safari.jpg" alt="Safari Scene">
+                </div>
+                <div class="blog-post-content">
+                    <div class="blog-post-meta">
+                        <span class="blog-post-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Chobe National Park, Botswana
+                        </span>
+                        <span class="blog-post-date">
+                            <i class="fas fa-calendar"></i>
+                            Recent Travel
+                        </span>
+                    </div>
+                    <h3 class="blog-post-title">The Vast Beauty of Chobe National Park</h3>
+                    <p class="blog-post-excerpt">
+                        This incredible safari moment captured the essence of African wildlife in its natural habitat. The vast landscape, the golden light, and the sense of adventure made this one of the most memorable experiences of my travels. There's something magical about being surrounded by nature's most magnificent creatures in their own world, where they belong...
+                    </p>
+                    <a href="#" class="read-more">
+                        Read Full Story
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Blog CTA -->
+        <div class="blog-cta">
+            <div class="blog-cta-content">
+                <h3>Want to See More Adventures?</h3>
+                <p>Follow my photography journey and stay updated with new stories, tips, and behind-the-scenes moments from my travels.</p>
+                <div class="cta-buttons">
+                    <a href="https://www.instagram.com/qhelani_moyo/" target="_blank" class="btn-blog btn-blog-primary">
+                        <i class="fab fa-instagram"></i>
+                        Follow on Instagram
+                    </a>
+                    <a href="index.html" class="btn-blog btn-blog-secondary">
+                        <i class="fas fa-home"></i>
+                        Back to Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Qhelani Moyo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="JS.js"></script>
+</body>
+</html>
