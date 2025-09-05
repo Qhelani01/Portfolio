@@ -341,6 +341,174 @@ body {
   transform: translateY(-2px);
 }
 
+/* ===== PHOTOGRAPHY SECTION ===== */
+.photography-intro {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.photography-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.photo-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  background: white;
+  border: 1px solid var(--border-color);
+}
+
+.photo-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--accent-color);
+}
+
+.photo-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+/* Specific positioning for Golden Gate photo */
+.photo-card:nth-child(2) .photo-img {
+  object-position: center 20%;
+}
+
+/* Specific positioning for Zambezi River photo */
+.photo-card:nth-child(3) .photo-img {
+  object-position: center 80%;
+}
+
+/* Specific positioning for California Quail photo */
+.photo-card:nth-child(4) .photo-img {
+  object-position: center 95%;
+}
+
+/* Specific positioning for Elephant photo */
+.photo-card:nth-child(5) .photo-img {
+  object-position: center 70%;
+}
+
+/* Specific positioning for Safari photo */
+.photo-card:nth-child(6) .photo-img {
+  object-position: center center;
+}
+
+.photo-card:hover .photo-img {
+  transform: scale(1.05);
+}
+
+.photo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 115, 85, 0.9) 0%,
+    rgba(160, 82, 45, 0.8) 50%,
+    rgba(210, 105, 30, 0.9) 100%
+  );
+  opacity: 0;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.photo-card:hover .photo-overlay {
+  opacity: 1;
+}
+
+.photo-info {
+  text-align: center;
+  color: white;
+  transform: translateY(20px);
+  transition: var(--transition);
+}
+
+.photo-card:hover .photo-info {
+  transform: translateY(0);
+}
+
+.photo-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.photo-story {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  max-height: 120px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.photo-meta {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.photo-location,
+.photo-date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.photo-location i,
+.photo-date i {
+  font-size: 0.9rem;
+}
+
+.photography-cta {
+  text-align: center;
+  padding: 2rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.cta-text {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
 /* ===== PROJECTS SECTION ===== */
 .projects-grid {
   display: grid;
@@ -572,6 +740,32 @@ body {
 
   .contact-cards {
     grid-template-columns: 1fr;
+  }
+
+  .photography-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-container {
+    height: 250px;
+  }
+
+  .photo-overlay {
+    padding: 1.5rem;
+  }
+
+  .photo-title {
+    font-size: 1.3rem;
+  }
+
+  .photo-story {
+    font-size: 0.9rem;
+    max-height: 100px;
+    -webkit-line-clamp: 4;
+  }
+
+  .photo-meta {
+    gap: 1rem;
   }
 
   .section-title {

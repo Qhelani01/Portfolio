@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, observerOptions);
 
   // Observe elements for scroll animations
-  document.querySelectorAll('.section-title, .about-content, .project-card, .contact-card').forEach(el => {
+  document.querySelectorAll('.section-title, .about-content, .project-card, .contact-card, .photo-card, .photography-intro').forEach(el => {
     el.classList.add('reveal');
     observer.observe(el);
   });
@@ -87,6 +87,41 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('mouseleave', () => {
       card.style.transform = 'translateY(0)';
     });
+  });
+
+  // Photography gallery interactions
+  document.querySelectorAll('.photo-card').forEach(card => {
+    // Enhanced hover effects for photo cards
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-8px) scale(1.02)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0) scale(1)';
+    });
+
+    // Click to expand photo story (optional feature)
+    card.addEventListener('click', () => {
+      const overlay = card.querySelector('.photo-overlay');
+      const story = card.querySelector('.photo-story');
+      
+      if (overlay && story) {
+        // Toggle full story view
+        if (story.style.maxHeight === 'none') {
+          story.style.maxHeight = '120px';
+          story.style.webkitLineClamp = '5';
+        } else {
+          story.style.maxHeight = 'none';
+          story.style.webkitLineClamp = 'none';
+        }
+      }
+    });
+  });
+
+  // Staggered animation for photo cards
+  const photoCards = document.querySelectorAll('.photo-card');
+  photoCards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.1}s`;
   });
 
   // Dynamic copyright year
