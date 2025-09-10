@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qhelani Moyo | Student Portfolio</title>
-    <link rel="stylesheet" href="CSS.css">
+    <link rel="preload" href="CSS.css" as="style">
+    <link rel="preload" href="JS.js" as="script">
+    <link rel="preload" href="IMG_9375.jpg" as="image">
+    <link rel="stylesheet" href="CSS.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="CSS.css"></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
+    <!-- Loading Indicator -->
+    <div id="loading-indicator" class="loading-indicator">
+        <div class="loading-spinner"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -95,7 +104,7 @@
             <div class="photography-gallery">
                 <div class="photo-card">
                     <div class="photo-container">
-                        <img src="photos/seattle-sunset.jpg" alt="Seattle Sunset" class="photo-img">
+                        <img src="photos/seattle-sunset.jpg" alt="Seattle Sunset" class="photo-img" loading="lazy">
                         <div class="photo-overlay">
                             <div class="photo-info">
                                 <h3 class="photo-title">Seattle Golden Hour</h3>
@@ -111,7 +120,7 @@
 
                 <div class="photo-card">
                     <div class="photo-container">
-                        <img src="photos/golden-gate.jpg" alt="Golden Gate Bridge" class="photo-img">
+                        <img src="photos/golden-gate.jpg" alt="Golden Gate Bridge" class="photo-img" loading="lazy">
                         <div class="photo-overlay">
                             <div class="photo-info">
                                 <h3 class="photo-title">Iconic Golden Gate</h3>
@@ -127,7 +136,7 @@
 
                 <div class="photo-card">
                     <div class="photo-container">
-                        <img src="photos/zambezi-river.jpg" alt="Zambezi River" class="photo-img">
+                        <img src="photos/zambezi-river.jpg" alt="Zambezi River" class="photo-img" loading="lazy">
                         <div class="photo-overlay">
                             <div class="photo-info">
                                 <h3 class="photo-title">Zambezi River Serenity</h3>
@@ -143,7 +152,7 @@
 
                 <div class="photo-card">
                     <div class="photo-container">
-                        <img src="photos/california-quail.jpg" alt="California Quail" class="photo-img">
+                        <img src="photos/california-quail.jpg" alt="California Quail" class="photo-img" loading="lazy">
                         <div class="photo-overlay">
                             <div class="photo-info">
                                 <h3 class="photo-title">California Quail Encounter</h3>
@@ -159,7 +168,7 @@
 
                 <div class="photo-card">
                     <div class="photo-container">
-                        <img src="photos/ellie.jpg" alt="Elephant Walking" class="photo-img">
+                        <img src="photos/ellie.jpg" alt="Elephant Walking" class="photo-img" loading="lazy">
                         <div class="photo-overlay">
                             <div class="photo-info">
                                 <h3 class="photo-title">Elephant Road Encounter</h3>
@@ -175,7 +184,7 @@
 
                 <div class="photo-card">
                     <div class="photo-container">
-                        <img src="photos/safari.jpg" alt="Safari Scene" class="photo-img">
+                        <img src="photos/safari.jpg" alt="Safari Scene" class="photo-img" loading="lazy">
                         <div class="photo-overlay">
                             <div class="photo-info">
                                 <h3 class="photo-title">Safari Adventure</h3>
@@ -309,6 +318,21 @@
     </button>
 
     <script src="JS.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>
 

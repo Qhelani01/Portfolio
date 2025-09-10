@@ -150,3 +150,24 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   document.head.appendChild(style);
 });
+
+// Loading indicator
+function initLoadingIndicator() {
+    const loadingIndicator = document.getElementById('loading-indicator');
+    
+    if (loadingIndicator) {
+        // Hide loading indicator when page is fully loaded
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                loadingIndicator.classList.add('hidden');
+                // Remove from DOM after animation
+                setTimeout(() => {
+                    loadingIndicator.remove();
+                }, 500);
+            }, 1000); // Show for at least 1 second
+        });
+    }
+}
+
+// Initialize loading indicator
+document.addEventListener('DOMContentLoaded', initLoadingIndicator);
