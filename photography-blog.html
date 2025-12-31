@@ -6,12 +6,13 @@
     <title>Photography Adventures | Qhelani Moyo</title>
     <link rel="stylesheet" href="CSS.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Photography Blog Specific Styles */
         .blog-hero {
-            background: linear-gradient(135deg, #8B7355 0%, #A0522D 50%, #D2691E 100%);
-            color: white;
+            background: linear-gradient(135deg, #374151 0%, #1F2937 50%, #111827 100%);
+            color: var(--text-primary);
             padding: 120px 0 80px;
             text-align: center;
             position: relative;
@@ -55,19 +56,22 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: white;
+            color: var(--text-primary);
             text-decoration: none;
             padding: 12px 24px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid var(--border-color);
             border-radius: 8px;
             transition: all 0.3s ease;
             font-weight: 500;
+            background: transparent;
         }
 
         .back-to-portfolio:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.6);
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            border-color: var(--accent-color);
             transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
         }
 
         .blog-content {
@@ -104,17 +108,17 @@
         }
 
         .blog-post {
-            background: white;
+            background: linear-gradient(135deg, #4B5563 0%, #374151 100%);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-md);
             transition: var(--transition);
             border: 1px solid var(--border-color);
         }
 
         .blog-post:hover {
             transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
             border-color: var(--accent-color);
         }
 
@@ -236,27 +240,31 @@
         }
 
         .btn-blog-primary {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
+            background: transparent;
+            color: var(--accent-color);
+            border-color: var(--accent-color);
         }
 
         .btn-blog-primary:hover {
             background: var(--accent-color);
+            color: var(--bg-primary);
             border-color: var(--accent-color);
             transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
         }
 
         .btn-blog-secondary {
             background: transparent;
-            color: var(--primary-color);
-            border-color: var(--primary-color);
+            color: var(--text-primary);
+            border-color: var(--border-color);
         }
 
         .btn-blog-secondary:hover {
-            background: var(--primary-color);
-            color: white;
+            background: var(--bg-secondary);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
             transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
         }
 
         .roller-img {
@@ -308,6 +316,9 @@
 </head>
 
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="CSS.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="CSS.css"></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -18,6 +19,9 @@
     <div id="loading-indicator" class="loading-indicator">
         <div class="loading-spinner"></div>
     </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scroll-progress"></div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -50,9 +54,13 @@
                 <h1 class="hero-title">
                     <span class="greeting">Hello, I'm</span>
                     <span class="name">Qhelani Moyo</span>
-                    <span class="title">Student & Developer</span>
+                    <span class="title" id="typing-text">Software Engineer</span>
                 </h1>
                 <p class="hero-subtitle">Passionate about using technology to solve real-world problems</p>
+                <div class="scroll-indicator">
+                    <span>Scroll to explore</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
                     <a href="#projects" class="btn btn-secondary">View My Work</a>
@@ -75,17 +83,60 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
+                    <div class="code-snippet">
+                        <div class="code-header">
+                            <span class="code-dot"></span>
+                            <span class="code-dot"></span>
+                            <span class="code-dot"></span>
+                            <span class="code-title">about.js</span>
+                        </div>
+                        <div class="code-content">
+                            <pre><code><span class="code-keyword">const</span> <span class="code-variable">aboutMe</span> = {
+  <span class="code-property">name</span>: <span class="code-string">'Qhelani Moyo'</span>,
+  <span class="code-property">role</span>: <span class="code-string">'Software Engineer'</span>,
+  <span class="code-property">passion</span>: <span class="code-string">'Building innovative solutions'</span>,
+  <span class="code-property">focus</span>: <span class="code-string">'Full-stack development'</span>
+};</code></pre>
+                        </div>
+                    </div>
                     <p class="about-description">
-                        Hi! I’m Qhelani. I enjoy turning ideas into code, discovering new places, and capturing the beauty of nature through photography. Let’s connect and create something awesome!
+                        Hi! I'm Qhelani, a Software Engineering student passionate about building innovative solutions. I enjoy turning ideas into code, discovering new places, and capturing the beauty of nature through photography. Currently focused on full-stack development and always eager to learn new technologies.
                     </p>
+                    <div class="about-details">
+                        <div class="about-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <strong>Education</strong>
+                                <p>Software Engineering Student</p>
+                            </div>
+                        </div>
+                        <div class="about-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Location</strong>
+                                <p>Available for opportunities</p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="skills">
                         <h3>Skills & Technologies</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Swift</span>
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">CSS</span>
+                        <div class="skills-categories">
+                            <div class="skill-category">
+                                <h4>Languages</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">Swift</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                </div>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Web Technologies</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">HTML</span>
+                                    <span class="skill-tag">CSS</span>
+                                    <span class="skill-tag">Flask</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -99,6 +150,12 @@
             <h2 class="section-title">My Projects</h2>
             <div class="projects-grid">
                 <article class="project-card">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-code"></i>
+                            <span>Flycatcher App</span>
+                        </div>
+                    </div>
                     <div class="project-content">
                         <h3 class="project-title">Flycatcher App</h3>
                         <p class="project-description">
@@ -113,13 +170,22 @@
                         </div>
                         <div class="project-links">
                             <a href="https://flycatcher-web-app.onrender.com/" target="_blank" class="project-link">
-                                <i class="fab fa-bird-alt"></i> View App
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Qhelani01" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
                             </a>
                         </div>
                     </div>
                 </article>
 
                 <article class="project-card">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Campus Climb</span>
+                        </div>
+                    </div>
                     <div class="project-content">
                         <h3 class="project-title">Campus Climb</h3>
                         <p class="project-description">
@@ -134,13 +200,22 @@
                         </div>
                         <div class="project-links">
                             <a href="https://campus-climb.vercel.app/" target="_blank" class="project-link">
-                                <i class="fab fa-book-open"></i> View App
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Qhelani01" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
                             </a>
                         </div>
                     </div>
                 </article>
 
                 <article class="project-card">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Phish Guardian</span>
+                        </div>
+                    </div>
                     <div class="project-content">
                         <h3 class="project-title">Phish Guardian</h3>
                         <p class="project-description">
@@ -153,7 +228,10 @@
                         </div>
                         <div class="project-links">
                             <a href="https://phish-guardian-nine.vercel.app/" target="_blank" class="project-link">
-                                <i class="fas fa-shield-alt"></i> Explore App
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/Qhelani01" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
                             </a>
                         </div>
                     </div>
@@ -299,6 +377,14 @@
                         </div>
                         <h3>LinkedIn</h3>
                         <p>Connect with me professionally</p>
+                    </a>
+
+                    <a href="mailto:qhelanimoyoe@gmail.com" class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>Get in touch via email</p>
                     </a>
                 </div>
             </div>

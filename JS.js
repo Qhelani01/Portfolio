@@ -35,13 +35,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
-      navbar.style.background = 'rgba(250, 250, 250, 0.98)';
-      navbar.style.boxShadow = '0 2px 20px rgba(139, 115, 85, 0.1)';
+      navbar.style.background = 'rgba(31, 41, 55, 0.95)';
+      navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.5)';
     } else {
-      navbar.style.background = 'rgba(250, 250, 250, 0.95)';
-      navbar.style.boxShadow = 'none';
+      navbar.style.background = 'rgba(31, 41, 55, 0.85)';
+      navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
     }
   });
+
+  // Scroll Progress Indicator
+  const scrollProgress = document.getElementById('scroll-progress');
+  if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (window.scrollY / windowHeight) * 100;
+      scrollProgress.style.width = scrolled + '%';
+    });
+  }
+
+  // Active Section Tracking
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function updateActiveNav() {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (window.scrollY >= sectionTop - 100) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav);
 
   // Back to Top Button
   const backToTop = document.getElementById('back-to-top');
@@ -171,3 +205,42 @@ function initLoadingIndicator() {
 
 // Initialize loading indicator
 document.addEventListener('DOMContentLoaded', initLoadingIndicator);
+
+// Typing Animation
+function typeWriter(element, text, speed = 100) {
+  let i = 0;
+  element.textContent = '';
+  
+  function type() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    } else {
+      // Optional: Add cursor blink effect
+      element.innerHTML = text + '<span class="cursor">|</span>';
+    }
+  }
+  
+  type();
+}
+
+// Initialize typing animation
+document.addEventListener('DOMContentLoaded', () => {
+  const typingText = document.getElementById('typing-text');
+  if (typingText) {
+    const texts = ['Software Engineer', 'Full-Stack Developer', 'Problem Solver'];
+    let currentIndex = 0;
+    
+    function typeNext() {
+      typeWriter(typingText, texts[currentIndex], 80);
+      currentIndex = (currentIndex + 1) % texts.length;
+      setTimeout(typeNext, texts[currentIndex].length * 80 + 2000);
+    }
+    
+    // Start after a short delay
+    setTimeout(() => {
+      typeNext();
+    }, 1000);
+  }
+});
