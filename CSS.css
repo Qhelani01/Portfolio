@@ -859,6 +859,9 @@ p {
   display: flex;
   flex-direction: column;
   background: linear-gradient(135deg, #4B5563 0%, #374151 100%);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .project-image {
