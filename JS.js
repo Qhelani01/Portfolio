@@ -112,8 +112,22 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 
-  // Simple hover effects for project cards
+  // Project card click handling - make entire card clickable
   document.querySelectorAll('.project-card').forEach(card => {
+    const projectUrl = card.getAttribute('data-project-url');
+    
+    if (projectUrl) {
+      // Make entire card clickable
+      card.addEventListener('click', (e) => {
+        // Don't navigate if clicking on the "View Code" link
+        if (e.target.closest('.project-link[href]')) {
+          return;
+        }
+        window.open(projectUrl, '_blank');
+      });
+    }
+    
+    // Hover effects
     card.addEventListener('mouseenter', () => {
       card.style.transform = 'translateY(-5px)';
     });
