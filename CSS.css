@@ -534,19 +534,20 @@ p {
 }
 
 .code-keyword {
-  color: #D1D5DB;
+  color: #595f39;
+  font-weight: 600;
 }
 
 .code-variable {
-  color: #E5E7EB;
+  color: #1D1D1F;
 }
 
 .code-property {
-  color: #9CA3AF;
+  color: #86868B;
 }
 
 .code-string {
-  color: #F9FAFB;
+  color: #595f39;
 }
 
 .about-details {
