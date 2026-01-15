@@ -243,7 +243,7 @@ function typeWriter(element, text, speed = 100) {
 document.addEventListener('DOMContentLoaded', () => {
   const typingText = document.getElementById('typing-text');
   if (typingText) {
-    const texts = ['Software Engineer', 'Full-Stack Developer', 'Problem Solver'];
+    const texts = ['Software Engineer', 'AI Engineer', 'ML Engineer', 'Full-Stack Developer'];
     let currentIndex = 0;
     
     function typeNext() {
