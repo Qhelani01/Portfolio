@@ -3,8 +3,8 @@
   /* Apple-style Light Theme Colors */
   --primary-color: #1D1D1F;
   --secondary-color: #86868B;
-  --accent-color: #0071E3;
-  --accent-hover: #0077ED;
+  --accent-color: #595f39;
+  --accent-hover: #4a5030;
   --text-primary: #1D1D1F;
   --text-secondary: #86868B;
   --text-light: #6E6E73;
@@ -20,11 +20,11 @@
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
   --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
-  --shadow-glow: 0 0 20px rgba(0, 113, 227, 0.1);
-  --shadow-glow-hover: 0 0 30px rgba(0, 113, 227, 0.15);
+  --shadow-glow: 0 0 20px rgba(89, 95, 57, 0.1);
+  --shadow-glow-hover: 0 0 30px rgba(89, 95, 57, 0.15);
   
   /* Apple-style gradients */
-  --gradient-primary: linear-gradient(135deg, #0071E3 0%, #0077ED 100%);
+  --gradient-primary: linear-gradient(135deg, #595f39 0%, #4a5030 100%);
   --gradient-secondary: linear-gradient(135deg, #F5F5F7 0%, #FFFFFF 100%);
   --gradient-text: linear-gradient(135deg, #1D1D1F 0%, #86868B 100%);
   
@@ -196,7 +196,7 @@ p {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 50%, rgba(0, 113, 227, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(89, 95, 57, 0.03) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(245, 245, 247, 0.5) 0%, transparent 50%);
   pointer-events: none;
   z-index: 1;
@@ -331,7 +331,7 @@ p {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+  box-shadow: 0 4px 12px rgba(89, 95, 57, 0.3);
 }
 
 .btn-secondary {
