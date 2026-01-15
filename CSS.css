@@ -1,32 +1,32 @@
 /* ===== CSS VARIABLES ===== */
 :root {
-  /* Dark Theme Colors - Gray Shades with White/Light Accents */
-  --primary-color: #FFFFFF;
-  --secondary-color: #F3F4F6;
-  --accent-color: #E5E7EB;
-  --accent-hover: #D1D5DB;
-  --text-primary: #FFFFFF;
-  --text-secondary: #E5E7EB;
-  --text-light: #D1D5DB;
-  --bg-primary: #1F2937;
-  --bg-secondary: #374151;
-  --bg-dark: #111827;
-  --bg-card: #374151;
-  --border-color: #4B5563;
-  --border-hover: #6B7280;
+  /* Apple-style Light Theme Colors */
+  --primary-color: #1D1D1F;
+  --secondary-color: #86868B;
+  --accent-color: #0071E3;
+  --accent-hover: #0077ED;
+  --text-primary: #1D1D1F;
+  --text-secondary: #86868B;
+  --text-light: #6E6E73;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F5F5F7;
+  --bg-dark: #000000;
+  --bg-card: #FFFFFF;
+  --border-color: #D2D2D7;
+  --border-hover: #86868B;
   
-  /* Shadows with subtle gray glow */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(255, 255, 255, 0.1);
-  --shadow-glow-hover: 0 0 30px rgba(255, 255, 255, 0.15);
+  /* Apple-style subtle shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 20px rgba(0, 113, 227, 0.1);
+  --shadow-glow-hover: 0 0 30px rgba(0, 113, 227, 0.15);
   
-  /* Gradients - Gray tones with white */
-  --gradient-primary: linear-gradient(135deg, #FFFFFF 0%, #E5E7EB 100%);
-  --gradient-secondary: linear-gradient(135deg, #374151 0%, #1F2937 100%);
-  --gradient-text: linear-gradient(135deg, #FFFFFF 0%, #F3F4F6 100%);
+  /* Apple-style gradients */
+  --gradient-primary: linear-gradient(135deg, #0071E3 0%, #0077ED 100%);
+  --gradient-secondary: linear-gradient(135deg, #F5F5F7 0%, #FFFFFF 100%);
+  --gradient-text: linear-gradient(135deg, #1D1D1F 0%, #86868B 100%);
   
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -96,12 +96,12 @@ p {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(31, 41, 55, 0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
   transition: var(--transition);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
 }
 
 .nav-container {
@@ -196,8 +196,8 @@ p {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(243, 244, 246, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(0, 113, 227, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(245, 245, 247, 0.5) 0%, transparent 50%);
   pointer-events: none;
   z-index: 1;
 }
@@ -233,7 +233,7 @@ p {
   inset: -3px;
   border-radius: 50%;
   padding: 3px;
-  background: linear-gradient(135deg, #FFFFFF, #E5E7EB);
+  background: var(--gradient-primary);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -321,47 +321,31 @@ p {
 }
 
 .btn-primary {
-  background: transparent;
-  color: var(--accent-color);
-  border-color: var(--accent-color);
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
   background: var(--accent-color);
-  transition: var(--transition);
-  z-index: -1;
+  color: #FFFFFF;
+  border-color: var(--accent-color);
+  border-radius: 22px;
 }
 
 .btn-primary:hover {
-  color: var(--bg-primary);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
-}
-
-.btn-primary:hover::before {
-  left: 0;
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--text-primary);
   border-color: var(--border-color);
+  border-radius: 22px;
 }
 
 .btn-secondary:hover {
   background: var(--bg-secondary);
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  transform: translateY(-1px);
 }
 
 .social-links {
@@ -493,12 +477,12 @@ p {
 
 /* Code Snippet Styling */
 .code-snippet {
-  background: linear-gradient(135deg, #4B5563 0%, #374151 100%);
-  border-radius: 8px;
+  background: var(--bg-card);
+  border-radius: 12px;
   border: 1px solid var(--border-color);
   margin-bottom: 2rem;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .code-header {
@@ -577,10 +561,11 @@ p {
   align-items: flex-start;
   gap: 1rem;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #4B5563 0%, #374151 100%);
-  border-radius: 8px;
+  background: var(--bg-card);
+  border-radius: 12px;
   border: 1px solid var(--border-color);
   transition: var(--transition);
+  box-shadow: var(--shadow-sm);
 }
 
 .about-item:hover {
@@ -622,10 +607,11 @@ p {
 }
 
 .skill-category {
-  background: linear-gradient(135deg, #4B5563 0%, #374151 100%);
+  background: var(--bg-card);
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
 }
 
 .skill-category h4 {
@@ -827,10 +813,10 @@ p {
 .photography-cta {
   text-align: center;
   padding: 2rem;
-  background: linear-gradient(135deg, #4B5563 0%, #374151 100%);
+  background: var(--bg-secondary);
   border-radius: 12px;
   border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .cta-text {
@@ -857,7 +843,7 @@ p {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #4B5563 0%, #374151 100%);
+  background: var(--bg-card);
   cursor: pointer;
   width: 100%;
   height: 100%;
@@ -955,7 +941,7 @@ p {
 
 .tech-tag {
   padding: 4px 12px;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   color: var(--text-secondary);
   border-radius: 6px;
   font-size: 0.8rem;
@@ -1013,11 +999,12 @@ p {
 }
 
 .contact-card {
-  background: linear-gradient(135deg, #4B5563 0%, #374151 100%);
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
   text-decoration: none;
+  box-shadow: var(--shadow-sm);
   color: inherit;
   box-shadow: var(--shadow-md);
   transition: var(--transition);

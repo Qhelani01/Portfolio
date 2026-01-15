@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
-      navbar.style.background = 'rgba(31, 41, 55, 0.95)';
-      navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.5)';
+      navbar.style.background = 'rgba(255, 255, 255, 0.9)';
+      navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.08)';
     } else {
-      navbar.style.background = 'rgba(31, 41, 55, 0.85)';
-      navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+      navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+      navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.05)';
     }
   });
 
