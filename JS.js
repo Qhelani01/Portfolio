@@ -1,68 +1,76 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-  // Dark Mode Toggle
-function initDarkMode() {
-  const darkModeToggle = document.getElementById('dark-mode-toggle');
-  const themeIcon = document.getElementById('theme-icon');
+// Dark Mode Toggle - Initialize immediately (before DOM ready)
+(function() {
   const html = document.documentElement;
-  
-  // Check for saved theme preference or default to light mode
   const currentTheme = localStorage.getItem('theme') || 'light';
-  
-  // Apply the theme
-  if (currentTheme === 'dark') {
-    html.setAttribute('data-theme', 'dark');
-    themeIcon.classList.remove('fa-moon');
-    themeIcon.classList.add('fa-sun');
-  } else {
-    html.setAttribute('data-theme', 'light');
-    themeIcon.classList.remove('fa-sun');
-    themeIcon.classList.add('fa-moon');
-  }
-  
-  // Toggle theme on button click
-  if (darkModeToggle) {
-    darkModeToggle.addEventListener('click', () => {
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
-      html.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      
-      // Update icon
-      if (newTheme === 'dark') {
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-      } else {
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-      }
-    });
-  }
+  html.setAttribute('data-theme', currentTheme);
+})();
+
+// Throttle function for scroll events
+function throttle(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize dark mode
+  // Dark Mode Toggle
+  function initDarkMode() {
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const html = document.documentElement;
+    
+    if (darkModeToggle && themeIcon) {
+      // Set initial icon
+      const currentTheme = html.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+      
+      darkModeToggle.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        if (newTheme === 'dark') {
+          themeIcon.classList.remove('fa-moon');
+          themeIcon.classList.add('fa-sun');
+        } else {
+          themeIcon.classList.remove('fa-sun');
+          themeIcon.classList.add('fa-moon');
+        }
+      });
+    }
+  }
+
   initDarkMode();
-  
-  // ... rest of your existing code ...
-  
+
   // Mobile Navigation Toggle
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
 
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-  });
-
-  // Close mobile menu when clicking on a link
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
     });
-  });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+  }
 
   // Smooth scroll for nav links
   document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
@@ -70,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
-        const offsetTop = target.offsetTop - 70; // Account for fixed navbar
+        const offsetTop = target.offsetTop - 70;
         window.scrollTo({
           top: offsetTop,
           behavior: 'smooth'
@@ -79,49 +87,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Navbar background on scroll
+  // Combined scroll handler with throttling
   const navbar = document.querySelector('.navbar');
-  window.addEventListener('scroll', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    if (window.scrollY > 100) {
-      if (currentTheme === 'dark') {
-        navbar.style.background = 'rgba(45, 45, 47, 0.9)';
-        navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.3)';
-      } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.9)';
-        navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.08)';
-      }
-    } else {
-      if (currentTheme === 'dark') {
-        navbar.style.background = 'rgba(45, 45, 47, 0.8)';
-        navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.2)';
-      } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.8)';
-        navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.05)';
-      }
-    }
-  });
-
-  // Scroll Progress Indicator
   const scrollProgress = document.getElementById('scroll-progress');
-  if (scrollProgress) {
-    window.addEventListener('scroll', () => {
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (window.scrollY / windowHeight) * 100;
-      scrollProgress.style.width = scrolled + '%';
-    });
-  }
-
-  // Active Section Tracking
+  const backToTop = document.getElementById('back-to-top');
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  function updateActiveNav() {
+  const handleScroll = throttle(() => {
+    const scrollY = window.scrollY;
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    
+    // Navbar background
+    if (navbar) {
+      if (scrollY > 100) {
+        if (currentTheme === 'dark') {
+          navbar.style.background = 'rgba(45, 45, 47, 0.9)';
+          navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.3)';
+        } else {
+          navbar.style.background = 'rgba(255, 255, 255, 0.9)';
+          navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.08)';
+        }
+      } else {
+        if (currentTheme === 'dark') {
+          navbar.style.background = 'rgba(45, 45, 47, 0.8)';
+          navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.2)';
+        } else {
+          navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+          navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.05)';
+        }
+      }
+    }
+
+    // Scroll progress
+    if (scrollProgress) {
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (scrollY / windowHeight) * 100;
+      scrollProgress.style.width = scrolled + '%';
+    }
+
+    // Back to top button
+    if (backToTop) {
+      backToTop.style.display = scrollY > 200 ? 'flex' : 'none';
+    }
+
+    // Active section tracking
     let current = '';
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
       const sectionHeight = section.clientHeight;
-      if (window.scrollY >= sectionTop - 100) {
+      if (scrollY >= sectionTop - 100) {
         current = section.getAttribute('id');
       }
     });
@@ -132,26 +147,18 @@ document.addEventListener('DOMContentLoaded', () => {
         link.classList.add('active');
       }
     });
+  }, 10); // Throttle to 10ms
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
+  // Back to top button click
+  if (backToTop) {
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 
-  window.addEventListener('scroll', updateActiveNav);
-
-  // Back to Top Button
-  const backToTop = document.getElementById('back-to-top');
-  
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      backToTop.style.display = 'flex';
-    } else {
-      backToTop.style.display = 'none';
-    }
-  });
-
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // Simple scroll animations
+  // Intersection Observer for animations
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -171,49 +178,27 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 
-  // Project card click handling - make entire card clickable
+  // Project card click handling
   document.querySelectorAll('.project-card').forEach(card => {
     const projectUrl = card.getAttribute('data-project-url');
     
     if (projectUrl) {
-      // Make entire card clickable
       card.addEventListener('click', (e) => {
-        // Don't navigate if clicking on the "View Code" link
         if (e.target.closest('.project-link[href]')) {
           return;
         }
         window.open(projectUrl, '_blank');
       });
     }
-    
-    // Hover effects
-    card.addEventListener('mouseenter', () => {
-      card.style.transform = 'translateY(-5px)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'translateY(0)';
-    });
   });
 
   // Photography gallery interactions
   document.querySelectorAll('.photo-card').forEach(card => {
-    // Enhanced hover effects for photo cards
-    card.addEventListener('mouseenter', () => {
-      card.style.transform = 'translateY(-8px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'translateY(0) scale(1)';
-    });
-
-    // Click to expand photo story (optional feature)
     card.addEventListener('click', () => {
       const overlay = card.querySelector('.photo-overlay');
       const story = card.querySelector('.photo-story');
       
       if (overlay && story) {
-        // Toggle full story view
         if (story.style.maxHeight === 'none') {
           story.style.maxHeight = '120px';
           story.style.webkitLineClamp = '5';
@@ -225,59 +210,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Staggered animation for photo cards
-  const photoCards = document.querySelectorAll('.photo-card');
-  photoCards.forEach((card, index) => {
-    card.style.animationDelay = `${index * 0.1}s`;
-  });
-
   // Dynamic copyright year
   const footer = document.querySelector("footer p");
   if (footer) {
     const year = new Date().getFullYear();
     footer.innerHTML = `&copy; ${year} Qhelani Moyo. All rights reserved.`;
   }
-
-  // Add loading animation
-  window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-  });
-
-  // Add CSS for loading animation
-  const style = document.createElement('style');
-  style.textContent = `
-    body {
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-    
-    body.loaded {
-      opacity: 1;
-    }
-  `;
-  document.head.appendChild(style);
 });
 
-// Loading indicator
+// Loading indicator - optimized
 function initLoadingIndicator() {
-    const loadingIndicator = document.getElementById('loading-indicator');
-    
-    if (loadingIndicator) {
-        // Hide loading indicator when page is fully loaded
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                loadingIndicator.classList.add('hidden');
-                // Remove from DOM after animation
-                setTimeout(() => {
-                    loadingIndicator.remove();
-                }, 500);
-            }, 1000); // Show for at least 1 second
-        });
+  const loadingIndicator = document.getElementById('loading-indicator');
+  
+  if (loadingIndicator) {
+    if (document.readyState === 'complete') {
+      loadingIndicator.classList.add('hidden');
+      setTimeout(() => loadingIndicator.remove(), 300);
+    } else {
+      window.addEventListener('load', () => {
+        loadingIndicator.classList.add('hidden');
+        setTimeout(() => loadingIndicator.remove(), 300);
+      }, { once: true });
     }
+  }
 }
 
-// Initialize loading indicator
-document.addEventListener('DOMContentLoaded', initLoadingIndicator);
+// Initialize loading indicator immediately
+initLoadingIndicator();
 
 // Typing Animation
 function typeWriter(element, text, speed = 100) {
@@ -290,7 +249,6 @@ function typeWriter(element, text, speed = 100) {
       i++;
       setTimeout(type, speed);
     } else {
-      // Optional: Add cursor blink effect
       element.innerHTML = text + '<span class="cursor">|</span>';
     }
   }
@@ -311,9 +269,8 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(typeNext, texts[currentIndex].length * 80 + 2000);
     }
     
-    // Start after a short delay
     setTimeout(() => {
       typeNext();
-    }, 1000);
+    }, 500); // Reduced delay
   }
 });
