@@ -1,4 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Dark Mode Toggle
+function initDarkMode() {
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  const html = document.documentElement;
+  
+  // Check for saved theme preference or default to light mode
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  
+  // Apply the theme
+  if (currentTheme === 'dark') {
+    html.setAttribute('data-theme', 'dark');
+    themeIcon.classList.remove('fa-moon');
+    themeIcon.classList.add('fa-sun');
+  } else {
+    html.setAttribute('data-theme', 'light');
+    themeIcon.classList.remove('fa-sun');
+    themeIcon.classList.add('fa-moon');
+  }
+  
+  // Toggle theme on button click
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Update icon
+      if (newTheme === 'dark') {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      }
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize dark mode
+  initDarkMode();
+  
+  // ... rest of your existing code ...
+  
   // Mobile Navigation Toggle
   const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
@@ -34,12 +82,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Navbar background on scroll
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
     if (window.scrollY > 100) {
-      navbar.style.background = 'rgba(255, 255, 255, 0.9)';
-      navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.08)';
+      if (currentTheme === 'dark') {
+        navbar.style.background = 'rgba(45, 45, 47, 0.9)';
+        navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.3)';
+      } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.9)';
+        navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.08)';
+      }
     } else {
-      navbar.style.background = 'rgba(255, 255, 255, 0.8)';
-      navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.05)';
+      if (currentTheme === 'dark') {
+        navbar.style.background = 'rgba(45, 45, 47, 0.8)';
+        navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.2)';
+      } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+        navbar.style.boxShadow = '0 1px 10px rgba(0, 0, 0, 0.05)';
+      }
     }
   });
 
