@@ -1586,7 +1586,8 @@ img {
 /* Blog Post Content Area */
 .blog-post-content {
   display: grid;
-  grid-template-columns: 1fr 60px;
+  /* Narrow share column on the left, wide content on the right */
+  grid-template-columns: 60px minmax(0, 1fr);
   gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
