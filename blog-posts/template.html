@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOG_POST_TITLE | Photography Blog | Qhelani Moyo</title>
+    <meta name="description" content="BLOG_POST_DESCRIPTION">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="../CSS.css" as="style">
+    <link rel="preload" href="../JS.js" as="script">
+    
+    <!-- Load CSS immediately -->
+    <link rel="stylesheet" href="../CSS.css">
+    
+    <!-- Load fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Load Font Awesome asynchronously -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+</head>
+
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">QM</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#photography" class="nav-link">Photography</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Post Hero Section -->
+    <section class="blog-post-hero">
+        <div class="blog-post-hero-image">
+            <img src="../photos/FEATURED_IMAGE.jpg" alt="BLOG_POST_TITLE" class="blog-hero-img" loading="eager">
+            <div class="blog-post-hero-overlay">
+                <div class="blog-post-hero-content">
+                    <a href="../photography-blog.html" class="blog-back-link">
+                        <i class="fas fa-arrow-left"></i> Back to Blog
+                    </a>
+                    <h1 class="blog-post-hero-title">BLOG_POST_TITLE</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post-article">
+        <div class="blog-post-container">
+            <!-- Article Header -->
+            <header class="blog-post-header">
+                <div class="blog-post-meta">
+                    <span class="blog-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        LOCATION
+                    </span>
+                    <span class="blog-meta-item">
+                        <i class="fas fa-calendar"></i>
+                        PUBLISH_DATE
+                    </span>
+                    <span class="blog-meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="reading-time">5 min read</span>
+                    </span>
+                </div>
+                <div class="blog-post-categories">
+                    <span class="blog-category-tag">CATEGORY_1</span>
+                    <span class="blog-category-tag">CATEGORY_2</span>
+                </div>
+            </header>
+
+            <!-- Main Content Area -->
+            <div class="blog-post-content">
+                <!-- Social Sharing (sticky on scroll) -->
+                <div class="blog-social-share">
+                    <span class="share-label">Share:</span>
+                    <button class="share-btn" data-platform="twitter" aria-label="Share on Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button class="share-btn" data-platform="facebook" aria-label="Share on Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </button>
+                    <button class="share-btn" data-platform="copy" aria-label="Copy link">
+                        <i class="fas fa-link"></i>
+                    </button>
+                </div>
+
+                <!-- Article Content -->
+                <div class="blog-post-body">
+                    <!-- Introduction paragraph -->
+                    <p class="blog-intro">INTRO_PARAGRAPH - This is the opening paragraph that hooks the reader and sets the scene for the story.</p>
+
+                    <!-- Full-width image example -->
+                    <figure class="blog-image-full">
+                        <img src="../photos/IMAGE_1.jpg" alt="Image description" loading="lazy">
+                        <figcaption>Image caption describing the photo and its context in the story.</figcaption>
+                    </figure>
+
+                    <!-- Story content with multiple paragraphs -->
+                    <h2>Section Heading</h2>
+                    <p>Story content goes here. This is where you write your detailed narrative, sharing the experience, emotions, and context behind the photographs. You can write as much as you want here, with multiple paragraphs telling the complete story.</p>
+
+                    <p>Continue the narrative with more paragraphs. The layout is optimized for reading, with comfortable line spacing and a max-width that makes it easy to follow along. You can include dialogue, descriptions, reflections, and any other elements that make your story compelling.</p>
+
+                    <!-- Half-width images side by side -->
+                    <figure class="blog-image-half">
+                        <img src="../photos/IMAGE_2.jpg" alt="Image description" loading="lazy">
+                        <figcaption>Caption for first image</figcaption>
+                    </figure>
+                    <figure class="blog-image-half">
+                        <img src="../photos/IMAGE_3.jpg" alt="Image description" loading="lazy">
+                        <figcaption>Caption for second image</figcaption>
+                    </figure>
+
+                    <h3>Subsection Heading</h3>
+                    <p>More story content continues here. You can break up your narrative with headings to create sections, making it easier for readers to follow along and digest the content.</p>
+
+                    <!-- Blockquote example -->
+                    <blockquote class="blog-quote">
+                        "A memorable quote or reflection that adds depth to your story."
+                    </blockquote>
+
+                    <p>Continue writing your story. The design supports long-form content, so don't hesitate to write extensively about your experiences, the locations you visited, the wildlife you encountered, or any other aspects of your photography adventures.</p>
+
+                    <!-- Inline small image -->
+                    <figure class="blog-image-inline">
+                        <img src="../photos/IMAGE_4.jpg" alt="Image description" loading="lazy">
+                        <figcaption>Small inline image with caption</figcaption>
+                    </figure>
+
+                    <p>More narrative content. You can embed images throughout your story wherever they make sense, supporting the text and breaking up long sections of writing.</p>
+
+                    <!-- List example -->
+                    <ul class="blog-list">
+                        <li>Key point or detail from your experience</li>
+                        <li>Another important aspect of the story</li>
+                        <li>Additional context or information</li>
+                    </ul>
+
+                    <h2>Another Section</h2>
+                    <p>Continue your story with more sections. Each section can have its own heading, allowing you to organize your narrative into logical parts.</p>
+
+                    <!-- Optional Photo Gallery at End -->
+                    <div class="blog-photo-gallery">
+                        <h3>More Photos from This Adventure</h3>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="../photos/IMAGE_5.jpg" alt="Gallery image" loading="lazy" class="gallery-img">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="../photos/IMAGE_6.jpg" alt="Gallery image" loading="lazy" class="gallery-img">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="../photos/IMAGE_7.jpg" alt="Gallery image" loading="lazy" class="gallery-img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>Concluding paragraph that wraps up your story and leaves the reader with a final thought or reflection.</p>
+                </div>
+
+                <!-- Instagram Section (Optional) -->
+                <div class="blog-instagram-section">
+                    <div class="instagram-cta">
+                        <i class="fab fa-instagram"></i>
+                        <div>
+                            <h3>See This on Instagram</h3>
+                            <p>Follow <a href="https://www.instagram.com/qhelani_moyo/" target="_blank">@qhelani_moyo</a> for more photography adventures</p>
+                            <a href="INSTAGRAM_POST_URL" target="_blank" class="btn-instagram-link" style="display: none;">
+                                View Instagram Post
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Related Posts Section -->
+    <section class="blog-related-posts">
+        <div class="blog-post-container">
+            <h2 class="related-posts-title">More Stories</h2>
+            <div class="related-posts-grid" id="related-posts-container">
+                <!-- Related posts will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Navigation -->
+    <nav class="blog-post-navigation">
+        <div class="blog-post-container">
+            <a href="PREVIOUS_POST.html" class="post-nav-link post-nav-prev" id="prev-post-link">
+                <i class="fas fa-arrow-left"></i>
+                <div>
+                    <span class="nav-label">Previous Story</span>
+                    <span class="nav-title">Previous Post Title</span>
+                </div>
+            </a>
+            <a href="NEXT_POST.html" class="post-nav-link post-nav-next" id="next-post-link">
+                <div>
+                    <span class="nav-label">Next Story</span>
+                    <span class="nav-title">Next Post Title</span>
+                </div>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Qhelani Moyo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../JS.js" defer></script>
+    <script src="../blog.js" defer></script>
+</body>
+</html>
