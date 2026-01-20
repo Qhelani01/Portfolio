@@ -2191,16 +2191,45 @@ img {
 /* ===== BLOG LISTING PAGE STYLES ===== */
 
 .blog-listing-hero {
-  background: var(--bg-secondary);
-  padding: 120px 0 80px;
-  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.blog-listing-hero-image {
+  width: 100%;
+  height: 100%;
   position: relative;
 }
 
+.blog-listing-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.blog-listing-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
 .blog-listing-hero-content {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .blog-listing-hero h1 {
@@ -2209,23 +2238,27 @@ img {
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .blog-listing-hero p {
   font-size: 1.2rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   line-height: 1.7;
   margin-bottom: 2rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .instagram-link {
-  color: var(--accent-color);
-  text-decoration: none;
+  color: var(--text-primary);
+  text-decoration: underline;
   font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .instagram-link:hover {
-  text-decoration: underline;
+  color: var(--accent-color);
+  text-shadow: 0 2px 10px rgba(89, 95, 57, 0.7);
 }
 
 .back-to-portfolio {
@@ -2509,6 +2542,15 @@ img {
 
 /* Responsive Blog Listing */
 @media (max-width: 768px) {
+  .blog-listing-hero {
+    height: 50vh;
+    min-height: 400px;
+  }
+
+  .blog-listing-hero-overlay {
+    padding: 2rem 1.5rem;
+  }
+
   .blog-listing-hero h1 {
     font-size: 2.5rem;
   }
