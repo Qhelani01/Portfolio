@@ -1,0 +1,108 @@
+{
+  "posts": [
+    {
+      "id": "seattle-golden-hour",
+      "title": "Golden Hour Magic in the Emerald City",
+      "slug": "seattle-golden-hour.html",
+      "date": "December 2024",
+      "location": "Seattle, Washington",
+      "categories": ["Urban", "Landscape", "Travel"],
+      "featuredImage": "../photos/seattle-sunset.jpg",
+      "excerpt": "There's something magical about Seattle during golden hour. The way the light reflects off the glass buildings and paints the sky in warm hues creates a scene that's both urban and ethereal.",
+      "readingTime": 8,
+      "instagramUrl": null,
+      "relatedPosts": ["golden-gate-fog", "california-quail"]
+    },
+    {
+      "id": "golden-gate-fog",
+      "title": "The Iconic Golden Gate Through the Fog",
+      "slug": "golden-gate-fog.html",
+      "date": "November 2024",
+      "location": "San Francisco, California",
+      "categories": ["Urban", "Landscape", "Travel"],
+      "featuredImage": "../photos/golden-gate.jpg",
+      "excerpt": "San Francisco's famous fog rolled in just as I arrived at the Golden Gate Bridge viewpoint. What started as a disappointment turned into one of my most dramatic shots.",
+      "readingTime": 7,
+      "instagramUrl": null,
+      "relatedPosts": ["seattle-golden-hour", "california-quail"]
+    },
+    {
+      "id": "lilac-breasted-roller",
+      "title": "Lilac-breasted Roller: Colors of Chobe",
+      "slug": "lilac-breasted-roller.html",
+      "date": "October 2024",
+      "location": "Chobe National Park, Botswana",
+      "categories": ["Wildlife", "Nature", "Travel"],
+      "featuredImage": "../photos/roller.jpg",
+      "excerpt": "Caught this Lilac‑breasted Roller perched between flights in Chobe National Park. Its brilliant plumage—turquoise, lilac, and emerald—lit up against the warm savanna tones.",
+      "readingTime": 6,
+      "instagramUrl": null,
+      "relatedPosts": ["elephant-victoria-falls", "chobe-safari"]
+    },
+    {
+      "id": "california-quail",
+      "title": "A Quiet Encounter with California's State Bird",
+      "slug": "california-quail.html",
+      "date": "September 2024",
+      "location": "Point Reyes, California",
+      "categories": ["Wildlife", "Nature", "Hiking"],
+      "featuredImage": "../photos/california-quail.jpg",
+      "excerpt": "Wildlife photography requires patience and respect. This beautiful California Quail was spotted during a peaceful hike in Point Reyes, completely unaware of my presence.",
+      "readingTime": 5,
+      "instagramUrl": null,
+      "relatedPosts": ["seattle-golden-hour", "golden-gate-fog"]
+    },
+    {
+      "id": "elephant-victoria-falls",
+      "title": "The Gentle Giant of Victoria Falls",
+      "slug": "elephant-victoria-falls.html",
+      "date": "August 2024",
+      "location": "Victoria Falls, Zimbabwe",
+      "categories": ["Wildlife", "Nature", "Travel"],
+      "featuredImage": "../photos/ellie.jpg",
+      "excerpt": "This magnificent elephant was casually walking down the road in Victoria Falls, Zimbabwe. It was incredible to witness such a powerful animal moving with such grace and confidence.",
+      "readingTime": 7,
+      "instagramUrl": null,
+      "relatedPosts": ["lilac-breasted-roller", "chobe-safari"]
+    },
+    {
+      "id": "chobe-safari",
+      "title": "The Vast Beauty of Chobe National Park",
+      "slug": "chobe-safari.html",
+      "date": "August 2024",
+      "location": "Chobe National Park, Botswana",
+      "categories": ["Wildlife", "Nature", "Travel"],
+      "featuredImage": "../photos/safari.jpg",
+      "excerpt": "This incredible safari moment captured the essence of African wildlife in its natural habitat. The vast landscape, the golden light, and the sense of adventure made this one of the most memorable experiences.",
+      "readingTime": 9,
+      "instagramUrl": null,
+      "relatedPosts": ["lilac-breasted-roller", "elephant-victoria-falls"]
+    }
+  ],
+  "categories": [
+    {
+      "name": "Urban",
+      "description": "Cityscapes and urban photography"
+    },
+    {
+      "name": "Landscape",
+      "description": "Natural and urban landscapes"
+    },
+    {
+      "name": "Wildlife",
+      "description": "Wildlife encounters and animal photography"
+    },
+    {
+      "name": "Nature",
+      "description": "Nature photography and outdoor adventures"
+    },
+    {
+      "name": "Travel",
+      "description": "Travel photography and adventures"
+    },
+    {
+      "name": "Hiking",
+      "description": "Hiking adventures and trail photography"
+    }
+  ]
+}
