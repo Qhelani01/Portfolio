@@ -138,9 +138,14 @@ async function loadRelatedPosts() {
 }
 
 function displayRelatedPosts(posts, container) {
-  container.innerHTML = posts.map(post => `
+  container.innerHTML = posts.map(post => {
+    // Add ../ prefix for blog posts (they're in blog-posts/ folder)
+    const imagePath = post.featuredImage.startsWith('../') 
+      ? post.featuredImage 
+      : '../' + post.featuredImage;
+    return `
     <a href="${post.slug}" class="related-post-card">
-      <img src="${post.featuredImage}" alt="${post.title}" class="related-post-image" loading="lazy">
+      <img src="${imagePath}" alt="${post.title}" class="related-post-image" loading="lazy">
       <div class="related-post-content">
         <h3 class="related-post-title">${post.title}</h3>
         <p class="related-post-excerpt">${post.excerpt}</p>
@@ -150,7 +155,8 @@ function displayRelatedPosts(posts, container) {
         </div>
       </div>
     </a>
-  `).join('');
+  `;
+  }).join('');
 }
 
 // Social Sharing
