@@ -2348,21 +2348,23 @@ img {
 /* Blog Grid for Listing */
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
   gap: 1.5rem;
   margin: 0 auto 4rem;
   max-width: 1300px;
+  justify-content: center;
 }
 
 @media (max-width: 1200px) {
   .blog-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
   }
 }
 
 @media (max-width: 900px) {
   .blog-grid {
     grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
 
