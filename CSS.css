@@ -2387,18 +2387,15 @@ img {
 .blog-post-card-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: var(--bg-secondary);
+  background: transparent;
 }
 
 .blog-post-card-image img {
   width: 100%;
-  height: 100%;
-  /* Show more of the photo (no cropping/zoom) */
-  object-fit: contain;
-  transition: var(--transition);
+  height: auto;
   display: block;
+  transition: var(--transition);
 }
 
 .blog-post-card:hover .blog-post-card-image img {
@@ -2407,6 +2404,8 @@ img {
 
 .blog-post-card-content {
   padding: 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .blog-post-card-meta {
