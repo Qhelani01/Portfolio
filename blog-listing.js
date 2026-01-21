@@ -84,31 +84,7 @@ function renderPosts() {
         <img src="${post.featuredImage}" alt="${post.title}" loading="lazy">
       </div>
       <div class="blog-post-card-content">
-        <div class="blog-post-card-meta">
-          <span class="blog-post-card-location">
-            <i class="fas fa-map-marker-alt"></i>
-            ${post.location}
-          </span>
-          <span class="blog-post-card-date">
-            <i class="fas fa-calendar"></i>
-            ${post.date}
-          </span>
-        </div>
-        <div class="blog-post-card-categories">
-          ${post.categories.map(cat => `<span class="blog-post-card-category">${cat}</span>`).join('')}
-        </div>
         <h3 class="blog-post-card-title">${post.title}</h3>
-        <p class="blog-post-card-excerpt">${post.excerpt}</p>
-        <div class="blog-post-card-footer">
-          <span class="blog-post-card-read-time">
-            <i class="fas fa-clock"></i>
-            ${post.readingTime} min read
-          </span>
-          <span class="blog-post-card-link">
-            Read Full Story
-            <i class="fas fa-arrow-right"></i>
-          </span>
-        </div>
       </div>
     </a>
   `).join('');

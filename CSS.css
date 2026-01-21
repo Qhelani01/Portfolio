@@ -2395,13 +2395,14 @@ img {
 .blog-post-card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* Show more of the photo (no cropping/zoom) */
+  object-fit: contain;
   transition: var(--transition);
   display: block;
 }
 
 .blog-post-card:hover .blog-post-card-image img {
-  transform: scale(1.05);
+  transform: none;
 }
 
 .blog-post-card-content {
@@ -2446,7 +2447,7 @@ img {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0;
   line-height: 1.3;
 }
 
