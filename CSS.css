@@ -805,10 +805,11 @@ p {
   bottom: 0;
   background: linear-gradient(
     135deg,
-    rgba(10, 25, 47, 0.95) 0%,
-    rgba(17, 34, 64, 0.9) 50%,
-    rgba(10, 25, 47, 0.95) 100%
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(245, 245, 247, 0.95) 50%,
+    rgba(255, 255, 255, 0.92) 100%
   );
+  backdrop-filter: blur(8px);
   opacity: 0;
   transition: var(--transition);
   display: flex;
@@ -826,9 +827,19 @@ p {
   opacity: 1;
 }
 
+/* Dark mode photo overlay */
+[data-theme="dark"] .photo-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(45, 45, 47, 0.92) 0%,
+    rgba(29, 29, 31, 0.95) 50%,
+    rgba(45, 45, 47, 0.92) 100%
+  );
+}
+
 .photo-info {
   text-align: center;
-  color: white;
+  color: var(--text-primary);
   transform: translateY(20px);
   transition: var(--transition);
 }
@@ -848,7 +859,7 @@ p {
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: var(--text-secondary);
   max-height: 120px;
   overflow: hidden;
   display: -webkit-box;
@@ -871,7 +882,7 @@ p {
   gap: 0.5rem;
   font-size: 0.85rem;
   font-weight: 500;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  color: var(--text-secondary);
 }
 
 .photo-location i,
