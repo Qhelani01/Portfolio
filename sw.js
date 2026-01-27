@@ -3,7 +3,7 @@ const CACHE_NAME = 'portfolio-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/photography-blog.html',
+  '/photography.html',
   '/CSS.css',
   '/JS.js',
   '/IMG_9375.jpg',
