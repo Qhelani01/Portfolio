@@ -1,6 +1,6 @@
 # 💼 Qhelani Moyo | Portfolio
 
-A modern, responsive portfolio website showcasing my work as a Software Engineer & AI Engineer. Built with clean, Apple-inspired design principles and featuring a full photography blog system.
+A modern, responsive portfolio website showcasing my work as a Software Engineer & AI Engineer. Built with clean, Apple-inspired design principles and with a content-driven photography section and Felix Rome–style location gallery.
 
 ---
 
@@ -24,15 +24,10 @@ A modern, responsive portfolio website showcasing my work as a Software Engineer
 - **Clickable Project Cards** - Entire project cards link to live demos
 - **Active Section Tracking** - Navigation highlights current section
 
-### Photography Blog System
-- **Blog Listing Page** - Grid layout with category filtering
-- **Individual Blog Posts** - Full-featured blog post pages with rich content
-- **Photo Gallery** - Lightbox functionality for image viewing
-- **Reading Time Calculator** - Automatic reading time estimation
-- **Social Sharing** - Share buttons for blog posts
-- **Related Posts** - Dynamic related content suggestions
-- **Category System** - Organized by topics (Nature, Wildlife, Travel, Urban, Landscape, Hiking)
-- **JSON-Driven Content** - Easy content management via `blog-data.json`
+### Photography
+- **Through My Lens (homepage)** - Six photo cards with hover overlays; content from `content.json`
+- **Explore More page** - Felix Rome–style location gallery (United States, Botswana, Zimbabwe) with hero, tabs, and 4-per-row grid; content from `content.json`
+- **Content-driven** - Photography page and homepage cards load from `content.json`; add images and edit one file to update the site
 
 ### Performance Optimizations
 - **Resource Preloading** - Critical CSS and JavaScript preloaded
@@ -51,7 +46,7 @@ A modern, responsive portfolio website showcasing my work as a Software Engineer
 - **JavaScript (ES6+)** - Interactive features, animations, and dynamic content
 - **Font Awesome 6.0** - Icons for UI elements and social links
 - **Google Fonts** - Inter and Fira Code font families
-- **JSON** - Blog content management and metadata
+- **JSON** - Content for photography and Through My Lens cards (`content.json`)
 
 ---
 
@@ -60,22 +55,19 @@ A modern, responsive portfolio website showcasing my work as a Software Engineer
 ```
 Portfolio/
 ├── index.html              # Main portfolio page
-├── photography-blog.html   # Blog listing page
-├── CSS.css                # Global stylesheet
-├── JS.js                  # Main JavaScript functionality
-├── blog.js                # Blog post page scripts
-├── blog-listing.js        # Blog listing page scripts
-├── blog-data.json         # Blog posts metadata
-├── sw.js                  # Service worker
-├── IMG_9375.jpg           # Profile image
-├── photos/                # Photography assets
-│   ├── victoria-falls-rainbow.jpg
-│   ├── village-weaver-nest.jpg
-│   └── ...
-├── blog-posts/            # Individual blog post pages
-│   ├── template.html      # Blog post template
-│   └── victoria-falls-adventures.html
-└── README.md              # This file
+├── photography.html        # Felix Rome–style photography gallery (Explore More)
+├── content.json            # Content source: photography locations + Through My Lens cards
+├── CSS.css                 # Global stylesheet
+├── JS.js                   # Main JavaScript (includes Through My Lens loader)
+├── photography.js          # Photography page: location switching, grid from content
+├── sw.js                   # Service worker
+├── IMG_9375.jpg            # Profile image
+├── photos/                 # Photography assets
+│   ├── united-states/      # Hero + 1.jpg … 8.jpg for Photography page
+│   ├── botswana/
+│   ├── zimbabwe/
+│   └── *.jpg               # Through My Lens cards (e.g. seattle-sunset.jpg)
+└── README.md               # This file
 ```
 
 ---
@@ -121,14 +113,21 @@ Portfolio/
 
 ---
 
-## 📸 Photography Blog
+## 📸 Adding Content
 
-The portfolio includes a full-featured photography blog where I share stories behind my travel and nature photography:
+All photography content (Photography page + homepage Through My Lens cards) is driven by **`content.json`**. To add or change images and copy:
 
-- **Blog Listing**: Browse all posts with category filtering
-- **Rich Content**: Full blog posts with images, galleries, and narratives
-- **Photo Galleries**: Interactive lightbox for viewing images
-- **Instagram Integration**: Links to [@qhelani_moyo](https://www.instagram.com/qhelani_moyo/)
+1. **Photography page** (United States / Botswana / Zimbabwe)
+   - Put images in `photos/united-states/`, `photos/botswana/`, `photos/zimbabwe/`:
+     - `hero.jpg` — landscape hero for that location
+     - `1.jpg` … `8.jpg` — grid images (4 per row)
+   - Edit `content.json` → `photography.locations[]`: set `hero` and `images` to those paths (e.g. `photos/united-states/hero.jpg`, `photos/united-states/1.jpg`, …).
+
+2. **Through My Lens** (six cards on the homepage)
+   - Add or replace images in `photos/` (e.g. `seattle-sunset.jpg`).
+   - Edit `content.json` → `throughMyLens[]`: each item has `image`, `title`, `story`, `location`, `date`. Add, remove, or reorder entries to change the cards.
+
+No HTML or JS edits are needed—only `content.json` and the image files.
 
 ---
 
@@ -147,17 +146,14 @@ The portfolio includes a full-featured photography blog where I share stories be
 2. Open `index.html` in your web browser
 3. Explore sections using the navigation menu
 4. Click project cards to view live demos
-5. Visit the photography blog to read stories behind the photos
+5. Use “Explore More” in Through My Lens to open the location gallery
 6. Toggle dark mode using the moon/sun icon
 
 ### Local Development
 
 Simply open `index.html` in a modern web browser. No build process required.
 
-For blog development:
-- Edit `blog-data.json` to add/modify blog posts
-- Use `blog-posts/template.html` as a reference for new posts
-- Follow the existing structure for consistency
+To add or update photography content, edit `content.json` and add image files under `photos/` (see **Adding Content** above). The site loads `content.json` at runtime.
 
 ---
 
