@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Through My Lens — Photography | Qhelani Moyo</title>
+    <link rel="preload" href="CSS.css" as="style">
+    <link rel="preload" href="JS.js" as="script">
+    <link rel="stylesheet" href="CSS.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+</head>
+<body class="page-photography">
+    <div class="scroll-progress" id="scroll-progress"></div>
+    <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">QM</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="photography.html" class="nav-link">Photography</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="photography-page-main">
+        <section class="section photography-section">
+            <div class="container container--photography">
+                <div class="photography-hero">
+                    <p class="photography-hero-line">the <em>"I want to go there."</em></p>
+                    <p class="photography-hero-line">type of images</p>
+                </div>
+                <p class="photography-intro photography-intro--page">
+                    Places that got under my skin. Follow <a href="https://www.instagram.com/qhelani_moyo/" target="_blank" class="instagram-link-inline">@qhelani_moyo</a> for more.
+                </p>
+
+                <article class="photography-destination">
+                    <h2 class="photography-destination-name">United States</h2>
+                    <p class="photography-destination-story">
+                        From Pacific coastlines to mountain light, the West Coast has a way of slowing time. Fog on the Golden Gate, golden hour in Seattle, quiet hikes in Point Reyes—these are the frames I keep coming back to.
+                    </p>
+                    <div class="photography-destination-grid">
+                        <img src="https://placehold.co/900x600/f5f5f7/86868b?text=United+States+1" alt="United States — photo coming soon" loading="lazy">
+                        <img src="https://placehold.co/900x600/f5f5f7/86868b?text=United+States+2" alt="United States — photo coming soon" loading="lazy">
+                        <img src="https://placehold.co/900x600/f5f5f7/86868b?text=United+States+3" alt="United States — photo coming soon" loading="lazy">
+                    </div>
+                </article>
+
+                <article class="photography-destination">
+                    <h2 class="photography-destination-name">Zimbabwe</h2>
+                    <p class="photography-destination-story">
+                        Victoria Falls doesn’t feel real until you’re there. The spray, the rainbows, the Zambezi rolling off the edge—and elephants walking down the road like they own the place. Tiny weavers building nests in the trees. It gets into your bones.
+                    </p>
+                    <div class="photography-destination-grid">
+                        <img src="https://placehold.co/900x600/f5f5f7/86868b?text=Zimbabwe+1" alt="Zimbabwe — photo coming soon" loading="lazy">
+                        <img src="https://placehold.co/900x600/f5f5f7/86868b?text=Zimbabwe+2" alt="Zimbabwe — photo coming soon" loading="lazy">
+                        <img src="https://placehold.co/900x600/f5f5f7/86868b?text=Zimbabwe+3" alt="Zimbabwe — photo coming soon" loading="lazy">
+                    </div>
+                </article>
+
+                <article class="photography-destination">
+                    <h2 class="photography-destination-name">Botswana</h2>
+                    <p class="photography-destination-story">
+                        Safari in Chobe is one of those experiences you can’t really explain—you have to stand in the landscape and feel it. The light, the space, and the wildlife moving through it. I’ve never met anyone who regretted going.
+                    </p>
+                    <div class="photography-destination-grid">
+                        <img src="https://placehold.co/900x600/f5f5f7/86868b?text=Botswana+1" alt="Botswana — photo coming soon" loading="lazy">
+                        <img src="https://placehold.co/900x600/f5f5f7/86868b?text=Botswana+2" alt="Botswana — photo coming soon" loading="lazy">
+                        <img src="https://placehold.co/900x600/f5f5f7/86868b?text=Botswana+3" alt="Botswana — photo coming soon" loading="lazy">
+                    </div>
+                </article>
+
+                <div class="photography-cta photography-cta--page">
+                    <a href="index.html#photography" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Portfolio
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="footer-year"></span> Qhelani Moyo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="JS.js" defer></script>
+    <script>
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

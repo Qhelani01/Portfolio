@@ -791,7 +791,32 @@ p {
   display: block;
 }
 
-/* Legacy photo-card styles (kept for blog/other pages that may reference them) */
+/* Photography page (Felix Rome–style full page) */
+.page-photography .photography-page-main {
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+.page-photography .photography-section {
+  padding-top: 2rem;
+}
+
+.photography-intro--page {
+  margin-bottom: 4rem;
+}
+
+.photography-cta--page {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.photography-cta--page .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Legacy photo-card styles (kept for index Through My Lens gallery) */
 .photography-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
