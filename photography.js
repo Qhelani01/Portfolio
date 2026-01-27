@@ -47,8 +47,10 @@
     grids.forEach(function (el) {
       if (el.getAttribute('data-location') === id) {
         el.removeAttribute('hidden');
+        el.classList.add('photography-grid-visible');
       } else {
         el.setAttribute('hidden', '');
+        el.classList.remove('photography-grid-visible');
       }
     });
 

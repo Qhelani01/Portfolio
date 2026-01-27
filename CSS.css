@@ -885,8 +885,16 @@ p {
   padding: 0 1.5rem;
 }
 
-.photography-grid--4col {
+/* Only the active location’s grid is visible; others are hidden */
+.photography-fullpage-content .photography-grid {
+  display: none;
+}
+
+.photography-fullpage-content .photography-grid.photography-grid-visible {
   display: grid;
+}
+
+.photography-grid--4col {
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
 }
