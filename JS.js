@@ -19,6 +19,7 @@ function throttle(func, wait) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  function doInit() {
   // Dark Mode Toggle
   function initDarkMode() {
     const darkModeToggle = document.getElementById('dark-mode-toggle');
@@ -214,6 +215,37 @@ document.addEventListener('DOMContentLoaded', () => {
   if (footer) {
     const year = new Date().getFullYear();
     footer.innerHTML = `&copy; ${year} Qhelani Moyo. All rights reserved.`;
+  }
+  }
+  const gallery = document.getElementById('through-my-lens-gallery');
+  if (gallery) {
+    const fallbackCards = [
+      { image: 'photos/seattle-sunset.jpg', title: 'Seattle Golden Hour', story: "Captured this stunning sunset over Seattle's skyline during my travels. The way the golden light reflected off the buildings and painted the sky in warm hues was absolutely mesmerizing.", location: 'Seattle, WA', date: 'Recent Travel' },
+      { image: 'photos/golden-gate.jpg', title: 'Iconic Golden Gate', story: "Standing before the magnificent Golden Gate Bridge was a dream come true. The fog rolling in from the Pacific created this dramatic scene, with the bridge's iconic orange-red color contrasting beautifully against the misty backdrop.", location: 'San Francisco, CA', date: 'Recent Travel' },
+      { image: 'photos/zambezi-river.jpg', title: 'Zambezi River Serenity', story: "The Zambezi River flows with such peaceful grace through the African landscape. This moment captured the river's gentle curves and the golden light reflecting off its surface.", location: 'Zambezi River', date: 'Recent Travel' },
+      { image: 'photos/california-quail.jpg', title: 'California Quail Encounter', story: "This beautiful California Quail was spotted during a peaceful hike in Point Reyes. These birds are known for their distinctive topknot and gentle nature.", location: 'Point Reyes, CA', date: 'Recent Hike' },
+      { image: 'photos/ellie.jpg', title: 'Elephant Road Encounter', story: "This magnificent elephant was casually walking down the road in Victoria Falls, Zimbabwe. It was incredible to witness such a powerful animal moving with such grace and confidence.", location: 'Victoria Falls, Zimbabwe', date: 'Recent Travel' },
+      { image: 'photos/safari.jpg', title: 'Safari Adventure', story: "This incredible safari moment captured the essence of African wildlife in its natural habitat. The vast landscape, the golden light, and the sense of adventure made this one of the most memorable experiences.", location: 'Chobe National Park, Botswana', date: 'Recent Travel' }
+    ];
+    function escape(s) { return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+    function renderCards(items) {
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'photo-card';
+        card.innerHTML = '<div class="photo-container"><img src="'+escape(item.image)+'" alt="'+escape(item.title)+'" class="photo-img" loading="lazy"><div class="photo-overlay"><div class="photo-info"><h3 class="photo-title">'+escape(item.title)+'</h3><p class="photo-story">'+escape(item.story)+'</p><div class="photo-meta"><span class="photo-location"><i class="fas fa-map-marker-alt"></i> '+escape(item.location)+'</span><span class="photo-date"><i class="fas fa-calendar"></i> '+escape(item.date)+'</span></div></div></div></div>';
+        gallery.appendChild(card);
+      });
+    }
+    fetch('content.json')
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(content => {
+        const items = (content && content.throughMyLens) || fallbackCards;
+        renderCards(items);
+      })
+      .catch(() => renderCards(fallbackCards))
+      .then(doInit);
+  } else {
+    doInit();
   }
 });
 
