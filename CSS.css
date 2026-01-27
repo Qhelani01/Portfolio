@@ -806,14 +806,115 @@ p {
 }
 
 .photography-cta--page {
-  padding-top: 1rem;
+  padding-top: 2rem;
   padding-bottom: 2rem;
+  text-align: center;
 }
 
 .photography-cta--page .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* Felix Rome–style: hero banner + location links + 4-per-row grid */
+.photography-fullpage {
+  max-width: 100%;
+  padding: 0 0 3rem;
+}
+
+.photography-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 37.5%;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.photography-hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photography-hero-location {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 1.5rem 2rem 2rem;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.photography-location-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 1.5rem;
+}
+
+.photography-location-link {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color var(--transition-fast);
+}
+
+.photography-location-link:hover {
+  color: var(--accent-color);
+}
+
+.photography-fullpage-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.photography-grid--4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.photography-grid--4col img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .photography-grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .photography-hero-banner {
+    padding-bottom: 56.25%;
+  }
+  .photography-location-links {
+    gap: 1.25rem;
+  }
+  .photography-grid--4col {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Legacy photo-card styles (kept for index Through My Lens gallery) */
