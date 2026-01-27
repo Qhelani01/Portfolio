@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, observerOptions);
 
   // Observe elements for scroll animations
-  document.querySelectorAll('.section-title, .about-content, .project-card, .contact-card, .photo-card, .photography-intro').forEach(el => {
+  document.querySelectorAll('.section-title, .about-content, .project-card, .contact-card, .photography-destination, .photography-intro, .photography-hero').forEach(el => {
     el.classList.add('reveal');
     observer.observe(el);
   });
@@ -192,23 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Photography gallery interactions
-  document.querySelectorAll('.photo-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const overlay = card.querySelector('.photo-overlay');
-      const story = card.querySelector('.photo-story');
-      
-      if (overlay && story) {
-        if (story.style.maxHeight === 'none') {
-          story.style.maxHeight = '120px';
-          story.style.webkitLineClamp = '5';
-        } else {
-          story.style.maxHeight = 'none';
-          story.style.webkitLineClamp = 'none';
-        }
-      }
-    });
-  });
+  // Photography section uses Felix Rome–style location blocks (no overlay clicks)
 
   // Dynamic copyright year
   const footer = document.querySelector("footer p");
