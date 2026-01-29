@@ -4,39 +4,39 @@
       {
         "id": "united-states",
         "title": "UNITED STATES",
-        "hero": "photos/united-states/hero.jpg",
+        "hero": "photos/united-states/seattle-hero.jpg",
         "images": [
-          "photos/united-states/1.jpg",
+          "photos/united-states/pelican.jpg",
           "photos/united-states/2.jpg",
-          "photos/united-states/3.jpg",
+          "photos/united-states/redwoods.jpg",
           "photos/united-states/4.jpg",
           "photos/united-states/5.jpg",
           "photos/united-states/6.jpg",
           "photos/united-states/7.jpg",
-          "photos/united-states/8.jpg"
+          "photos/united-states/camel-by-sea.jpg"
         ]
       },
       {
         "id": "botswana",
         "title": "BOTSWANA",
-        "hero": "photos/botswana/hero.jpg",
+        "hero": "photos/botswana/lioness-hero.jpg",
         "images": [
-          "photos/botswana/1.jpg",
-          "photos/botswana/2.jpg",
-          "photos/botswana/3.jpg",
-          "photos/botswana/4.jpg",
-          "photos/botswana/5.jpg",
-          "photos/botswana/6.jpg",
-          "photos/botswana/7.jpg",
+          "photos/botswana/lion-hunt.jpg",
+          "photos/botswana/hippo.JPG",
+          "photos/botswana/impala-ram.jpg",
+          "photos/botswana/cormorant.JPG",
+          "photos/botswana/roller.jpg",
+          "photos/botswana/impala.jpg",
+          "photos/botswana/lioness.JPG",
           "photos/botswana/8.jpg"
         ]
       },
       {
         "id": "zimbabwe",
         "title": "ZIMBABWE",
-        "hero": "photos/zimbabwe/hero.jpg",
+        "hero": "photos/zimbabwe/zambezi.jpg",
         "images": [
-          "photos/zimbabwe/1.jpg",
+          "photos/zimbabwe/weaver.jpg",
           "photos/zimbabwe/2.jpg",
           "photos/zimbabwe/3.jpg",
           "photos/zimbabwe/4.jpg",
