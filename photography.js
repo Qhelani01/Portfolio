@@ -33,14 +33,25 @@
 
   var locations = {};
 
-  function fillGrid(el, imagePaths, locationLabel) {
+  function fillGrid(el, imagePaths, locationLabel, locId) {
     el.innerHTML = '';
     (imagePaths || []).forEach(function (src, i) {
+      var wrap = document.createElement('div');
+      wrap.className = 'photography-grid-item';
+      wrap.setAttribute('data-index', i);
+      wrap.setAttribute('data-location', locId);
       var img = document.createElement('img');
       img.src = src;
       img.alt = locationLabel + ' — photo ' + (i + 1);
       img.loading = 'lazy';
-      el.appendChild(img);
+      var zoomIcon = document.createElement('span');
+      zoomIcon.className = 'photography-grid-zoom-icon';
+      zoomIcon.setAttribute('aria-hidden', 'true');
+      zoomIcon.innerHTML = '<i class="fas fa-search-plus"></i>';
+      wrap.appendChild(img);
+      wrap.appendChild(zoomIcon);
+      wrap.addEventListener('click', function () { openLightbox(locId, i); });
+      el.appendChild(wrap);
     });
   }
 
@@ -89,8 +100,96 @@
       var locId = el.getAttribute('data-location');
       var loc = locations[locId];
       if (loc && loc.images && loc.images.length) {
-        fillGrid(el, loc.images, loc.title);
+        fillGrid(el, loc.images, loc.title, locId);
       }
+    });
+  }
+
+  var lightbox = document.getElementById('photography-lightbox');
+  var lightboxImg = document.getElementById('photography-lightbox-img');
+  var lightboxClose = document.getElementById('photography-lightbox-close');
+  var lightboxPrev = document.getElementById('photography-lightbox-prev');
+  var lightboxNext = document.getElementById('photography-lightbox-next');
+  var lightboxZoneLeft = document.getElementById('photography-lightbox-zone-left');
+  var lightboxZoneRight = document.getElementById('photography-lightbox-zone-right');
+  var lightboxImageWrap = document.getElementById('photography-lightbox-image-wrap');
+
+  var currentLightboxLocation = null;
+  var currentLightboxIndex = 0;
+
+  function getLightboxImages() {
+    if (!currentLightboxLocation || !locations[currentLightboxLocation]) return [];
+    return locations[currentLightboxLocation].images || [];
+  }
+
+  function showLightboxImage() {
+    var imgs = getLightboxImages();
+    if (imgs.length === 0) return;
+    var idx = ((currentLightboxIndex % imgs.length) + imgs.length) % imgs.length;
+    currentLightboxIndex = idx;
+    lightboxImg.src = imgs[idx];
+    lightboxImg.alt = locations[currentLightboxLocation].title + ' — photo ' + (idx + 1);
+  }
+
+  function openLightbox(locId, index) {
+    if (!locations[locId] || !locations[locId].images || locations[locId].images.length === 0) return;
+    currentLightboxLocation = locId;
+    currentLightboxIndex = index;
+    showLightboxImage();
+    if (lightbox) {
+      lightbox.classList.add('photography-lightbox-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeLightbox() {
+    if (lightbox) {
+      lightbox.classList.remove('photography-lightbox-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function lightboxPrevImage() {
+    var imgs = getLightboxImages();
+    if (imgs.length === 0) return;
+    currentLightboxIndex = (currentLightboxIndex - 1 + imgs.length) % imgs.length;
+    showLightboxImage();
+  }
+
+  function lightboxNextImage() {
+    var imgs = getLightboxImages();
+    if (imgs.length === 0) return;
+    currentLightboxIndex = (currentLightboxIndex + 1) % imgs.length;
+    showLightboxImage();
+  }
+
+  function initLightbox() {
+    if (!lightbox || !lightboxImg) return;
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxPrev) lightboxPrev.addEventListener('click', lightboxPrevImage);
+    if (lightboxNext) lightboxNext.addEventListener('click', lightboxNextImage);
+    if (lightboxZoneLeft) lightboxZoneLeft.addEventListener('click', lightboxPrevImage);
+    if (lightboxZoneRight) lightboxZoneRight.addEventListener('click', lightboxNextImage);
+    if (lightboxImageWrap) {
+      lightboxImageWrap.addEventListener('click', function (e) {
+        if (e.target === lightboxImg) {
+          var rect = lightboxImg.getBoundingClientRect();
+          var mid = rect.left + rect.width / 2;
+          if (e.clientX < mid) lightboxPrevImage();
+          else lightboxNextImage();
+        }
+      });
+    }
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox || !lightbox.classList.contains('photography-lightbox-open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lightboxPrevImage();
+      if (e.key === 'ArrowRight') lightboxNextImage();
     });
   }
 
@@ -111,6 +210,7 @@
   }
 
   function init() {
+    initLightbox();
     fetch('content.json')
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (content) {
