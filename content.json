@@ -7,12 +7,10 @@
         "hero": "photos/united-states/seattle-hero.jpg",
         "images": [
           "photos/united-states/pelican.jpg",
-          "photos/united-states/2.jpg",
+          "photos/united-states/tule-elk.jpg",
           "photos/united-states/redwoods.jpg",
           "photos/united-states/point-reyes.jpg",
-          "photos/united-states/5.jpg",
-          "photos/united-states/6.jpg",
-          "photos/united-states/7.jpg",
+          "photos/united-states/tule-elk2.jpg",
           "photos/united-states/camel-by-sea.jpg"
         ]
       },
@@ -28,7 +26,7 @@
           "photos/botswana/roller.jpg",
           "photos/botswana/impala.jpg",
           "photos/botswana/lioness.JPG",
-          "photos/botswana/8.jpg"
+          "photos/botswana/safari.jpg"
         ]
       },
       {
@@ -37,13 +35,8 @@
         "hero": "photos/zimbabwe/zambezi.jpg",
         "images": [
           "photos/zimbabwe/weaver.jpg",
-          "photos/zimbabwe/2.jpg",
-          "photos/zimbabwe/3.jpg",
-          "photos/zimbabwe/4.jpg",
-          "photos/zimbabwe/5.jpg",
-          "photos/zimbabwe/6.jpg",
-          "photos/zimbabwe/7.jpg",
-          "photos/zimbabwe/8.jpg"
+          "photos/zimbabwe/vicfalls.jpg",
+          "photos/zimbabwe/zambezi.jpg"
         ]
       }
     ]
