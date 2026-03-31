@@ -9,17 +9,6 @@ const urlsToCache = [
   '/JS.js',
   '/photography.js',
   '/IMG_9375.jpg',
-  '/photos/seattle-sunset.jpg',
-  '/photos/golden-gate.jpg',
-  '/photos/zambezi-river.jpg',
-  '/photos/california-quail.jpg',
-  '/photos/ellie.jpg',
-  '/photos/safari.jpg',
-  '/photos/roller.jpg',
-  '/photos/lion.jpg',
-  '/photos/lion16x9.jpg',
-  '/photos/baboon16x9.jpg',
-  '/photos/pumba&pumba.jpg',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
 ];
