@@ -1,5 +1,5 @@
 // Service Worker for Portfolio Caching
-const CACHE_NAME = 'portfolio-v1';
+const CACHE_NAME = 'portfolio-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -33,15 +33,36 @@ self.addEventListener('install', event => {
         return cache.addAll(urlsToCache);
       })
   );
+  self.skipWaiting();
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - cache-first for static shell, network-first for JSON/photos
 self.addEventListener('fetch', event => {
+  const req = event.request;
+  const url = new URL(req.url);
+
+  // Always try network first for content so updates appear immediately.
+  const isContentJson = url.origin === self.location.origin && url.pathname.endsWith('/content.json');
+  const isPhoto = url.origin === self.location.origin && url.pathname.startsWith('/photos/');
+
+  if (isContentJson || isPhoto) {
+    event.respondWith(
+      fetch(req)
+        .then(response => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(req, copy));
+          return response;
+        })
+        .catch(() => caches.match(req))
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request)
+    caches.match(req)
       .then(response => {
         // Return cached version or fetch from network
-        return response || fetch(event.request);
+        return response || fetch(req);
       }
     )
   );
@@ -61,4 +82,5 @@ self.addEventListener('activate', event => {
       );
     })
   );
+  self.clients.claim();
 });
