@@ -1327,7 +1327,8 @@ p {
 
 .project-image {
   width: 100%;
-  height: 200px;
+  height: 120px;
+  flex-shrink: 0;
   overflow: hidden;
   background: var(--bg-primary);
   position: relative;
@@ -1337,39 +1338,35 @@ p {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
   color: var(--text-secondary);
   background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-card) 100%);
   transition: var(--transition);
 }
 
 .project-image-placeholder i {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--accent-color);
-  opacity: 0.5;
-}
-
-.project-image-placeholder span {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  opacity: 0.55;
 }
 
 .project-card:hover .project-image-placeholder {
-  transform: scale(1.05);
   background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-primary) 100%);
 }
 
 .project-card:hover .project-image-placeholder i {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.06);
 }
 
 .project-content {
-  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem 1.75rem 1.75rem;
+  min-height: 0;
 }
 
 .project-card::before {
@@ -1399,7 +1396,8 @@ p {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  margin: 0;
+  line-height: 1.25;
 }
 
 .project-description {
@@ -1409,8 +1407,11 @@ p {
 }
 
 .project-body {
-  margin-bottom: 1.5rem;
+  margin: 0;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
 }
 
 .project-hook {
@@ -1418,7 +1419,7 @@ p {
   font-size: 1.02rem;
   font-weight: 500;
   line-height: 1.55;
-  margin: 0 0 1rem;
+  margin: 0;
   max-width: 52ch;
 }
 
@@ -1427,7 +1428,7 @@ p {
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: flex-start;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 .project-metric {
@@ -1456,9 +1457,9 @@ p {
 .project-highlights li {
   position: relative;
   padding-left: 1.35rem;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.75rem;
   font-size: 0.92rem;
-  line-height: 1.55;
+  line-height: 1.65;
   color: var(--text-secondary);
 }
 
@@ -1482,7 +1483,9 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin: 0;
+  padding-top: 1.125rem;
+  border-top: 1px solid var(--border-color);
 }
 
 .tech-tag {
@@ -1507,6 +1510,8 @@ p {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 0.25rem;
 }
 
 .project-link {
