@@ -1408,6 +1408,76 @@ p {
   margin-bottom: 1.5rem;
 }
 
+.project-body {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.project-hook {
+  color: var(--text-primary);
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.55;
+  margin: 0 0 1rem;
+  max-width: 52ch;
+}
+
+.project-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+}
+
+.project-metric {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-family: var(--font-mono);
+  color: var(--accent-color);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  line-height: 1.2;
+}
+
+.project-highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  max-width: 100%;
+}
+
+.project-highlights li {
+  position: relative;
+  padding-left: 1.35rem;
+  margin-bottom: 0.65rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.project-highlights li:last-child {
+  margin-bottom: 0;
+}
+
+.project-highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  opacity: 0.85;
+}
+
 .project-tech {
   display: flex;
   flex-wrap: wrap;
