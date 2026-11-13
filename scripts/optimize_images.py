@@ -1,108 +1,110 @@
 #!/usr/bin/env python3
+"""Build web-ready images and content.js from content.json.
+
+Usage:  python3 scripts/optimize_images.py
+
+For every image referenced in content.json (plus the profile photo), this
+writes resized WebP variants to photos/web/ and generates content.js, which
+the pages load directly (works from file:// too, no fetch needed).
+
+Originals are never modified. EXIF metadata (including GPS) is stripped
+from the generated files. Re-runs only rebuild images whose source changed.
+"""
 from __future__ import annotations
 
-import os
+import json
+import re
 import sys
 from pathlib import Path
-from typing import Iterable
 
 from PIL import Image, ImageOps
 
+ROOT = Path(__file__).resolve().parent.parent
+SRC_JSON = ROOT / "content.json"
+OUT_JS = ROOT / "content.js"
+WEB_DIR = ROOT / "photos" / "web"
 
-IMG_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"}
+IMG_EXTS = (".jpg", ".jpeg", ".png", ".webp")
+QUALITY = 78
 
+# Widths generated per image role (capped at the original width).
+WIDTHS_DEFAULT = (480, 960, 1600)
+WIDTHS_HERO = (960, 1600, 2400)
 
-def iter_images(paths: Iterable[Path]) -> Iterable[Path]:
-    for p in paths:
-        if p.is_dir():
-            for root, _, files in os.walk(p):
-                for name in files:
-                    fp = Path(root) / name
-                    if fp.suffix in IMG_EXTS:
-                        yield fp
-        else:
-            if p.suffix in IMG_EXTS and p.exists():
-                yield p
-
-
-def max_edge_for(path: Path) -> int:
-    n = path.name.lower()
-    s = str(path).lower()
-
-    if n == "img_9375.jpg":
-        return 1200
-    if "hero" in n:
-        return 2000
-    if "16x9" in n:
-        return 2000
-    if "/photos/" in s:
-        return 1600
-    return 2000
+# Images used directly in HTML rather than via content.json.
+EXTRAS = {
+    "IMG_9375.jpg": ("photos/web/profile", (240, 480)),
+}
 
 
-def optimize_one(path: Path) -> tuple[bool, str]:
-    original_size = path.stat().st_size
-    max_edge = max_edge_for(path)
-
-    try:
-        with Image.open(path) as im0:
-            im = ImageOps.exif_transpose(im0)
-            fmt = (im0.format or "").upper()
-            mode = im.mode
-
-            if mode in ("P", "RGBA"):
-                im = im.convert("RGB")
-            elif mode != "RGB":
-                im = im.convert("RGB")
-
-            w, h = im.size
-            scale = min(1.0, max_edge / float(max(w, h)))
-            if scale < 1.0:
-                im = im.resize((int(w * scale), int(h * scale)), Image.Resampling.LANCZOS)
-
-            tmp = path.with_suffix(path.suffix + ".tmp")
-
-            if fmt in ("PNG",) and path.suffix.lower() == ".png":
-                im.save(tmp, format="PNG", optimize=True)
-            else:
-                im.save(
-                    tmp,
-                    format="JPEG",
-                    quality=82,
-                    optimize=True,
-                    progressive=True,
-                    subsampling=2,
-                )
-
-        new_size = tmp.stat().st_size
-        if new_size >= original_size:
-            tmp.unlink(missing_ok=True)
-            return False, f"kept (would grow) {original_size}B"
-
-        tmp.replace(path)
-        return True, f"{original_size}B -> {new_size}B"
-    except Exception as e:
-        return False, f"error: {e}"
+def variant_path(out_stem: str, width: int) -> Path:
+    return ROOT / f"{out_stem}-{width}.webp"
 
 
-def main(argv: list[str]) -> int:
-    roots = [Path(a) for a in argv[1:]] or [Path("photos"), Path("IMG_9375.jpg")]
-    imgs = sorted(set(iter_images(roots)))
-    if not imgs:
-        print("No images found.", file=sys.stderr)
-        return 1
+def build(src_rel: str, out_stem: str, widths: tuple[int, ...]) -> dict:
+    src = ROOT / src_rel
+    if not src.exists():
+        raise FileNotFoundError(f"Image not found: {src_rel}")
 
-    changed = 0
-    for p in imgs:
-        ok, msg = optimize_one(p)
-        if ok:
-            changed += 1
-        print(f"{'OK ' if ok else 'SKIP'} {p} — {msg}")
+    with Image.open(src) as im0:
+        im = ImageOps.exif_transpose(im0).convert("RGB")
+        w, h = im.size
+        targets = sorted({min(tw, w) for tw in widths})
+        src_mtime = src.stat().st_mtime
 
-    print(f"\nOptimized {changed}/{len(imgs)} images.")
+        for tw in targets:
+            out = variant_path(out_stem, tw)
+            if out.exists() and out.stat().st_mtime >= src_mtime:
+                continue
+            out.parent.mkdir(parents=True, exist_ok=True)
+            th = round(h * tw / w)
+            resized = im if tw == w else im.resize((tw, th), Image.Resampling.LANCZOS)
+            resized.save(out, "WEBP", quality=QUALITY, method=6)
+            print(f"  wrote {out.relative_to(ROOT)} ({out.stat().st_size // 1024} KB)")
+
+    srcset = ", ".join(f"{variant_path(out_stem, tw).relative_to(ROOT).as_posix()} {tw}w" for tw in targets)
+    mid = targets[len(targets) // 2]
+    return {
+        "src": variant_path(out_stem, mid).relative_to(ROOT).as_posix(),
+        "srcset": srcset,
+        "w": w,
+        "h": h,
+        "alt": re.sub(r"\d+$", "", Path(src_rel).stem).replace("-", " ").strip().capitalize(),
+    }
+
+
+def out_stem_for(src_rel: str) -> str:
+    rel = Path(src_rel).relative_to("photos").with_suffix("")
+    return (Path("photos/web") / rel).as_posix().lower()
+
+
+def transform(node, key: str | None = None):
+    """Replace every image path string with its built image object."""
+    if isinstance(node, dict):
+        return {k: transform(v, k) for k, v in node.items()}
+    if isinstance(node, list):
+        return [transform(v, key) for v in node]
+    if isinstance(node, str) and node.startswith("photos/") and node.lower().endswith(IMG_EXTS):
+        widths = WIDTHS_HERO if key == "hero" else WIDTHS_DEFAULT
+        return build(node, out_stem_for(node), widths)
+    return node
+
+
+def main() -> int:
+    content = json.loads(SRC_JSON.read_text())
+    print("Building images…")
+    built = transform(content)
+
+    for src_rel, (stem, widths) in EXTRAS.items():
+        build(src_rel, stem, widths)
+
+    OUT_JS.write_text(
+        "// Generated by scripts/optimize_images.py from content.json. Do not edit by hand.\n"
+        f"window.SITE_CONTENT = {json.dumps(built, indent=2, ensure_ascii=False)};\n"
+    )
+    print(f"Wrote {OUT_JS.relative_to(ROOT)}")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main(sys.argv))
-
+    sys.exit(main())

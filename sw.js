@@ -1,75 +1,51 @@
-// Service Worker for Portfolio Caching
-const CACHE_NAME = 'portfolio-v2';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/photography.html',
-  '/content.json',
-  '/CSS.css',
-  '/JS.js',
-  '/photography.js',
-  '/IMG_9375.jpg',
-  'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
-];
+// Service worker: fast repeat visits without ever serving a stale site.
+// - Pages: network first, cached copy only when offline.
+// - CSS/JS/content: stale-while-revalidate (instant, refreshed in background).
+// - Generated photos (photos/web/): cache first (file names are stable per size).
+const VERSION = 'v3';
+const CACHE = `portfolio-${VERSION}`;
+const PRECACHE = ['./', 'index.html', 'photography.html', 'styles.css', 'main.js', 'photography.js', 'content.js', 'favicon.svg'];
 
-// Install event - cache resources
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
-  );
-  self.skipWaiting();
+self.addEventListener('install', (event) => {
+  event.waitUntil(caches.open(CACHE).then((c) => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
 });
 
-// Fetch event - cache-first for static shell, network-first for JSON/photos
-self.addEventListener('fetch', event => {
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
+  );
+});
+
+const put = (req, res) => {
+  if (res && res.ok && res.type === 'basic') {
+    const copy = res.clone();
+    caches.open(CACHE).then((c) => c.put(req, copy));
+  }
+  return res;
+};
+
+self.addEventListener('fetch', (event) => {
   const req = event.request;
+  if (req.method !== 'GET') return;
   const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return; // let the browser handle fonts etc.
 
-  // Always try network first for content so updates appear immediately.
-  const isContentJson = url.origin === self.location.origin && url.pathname.endsWith('/content.json');
-  const isPhoto = url.origin === self.location.origin && url.pathname.startsWith('/photos/');
+  if (req.mode === 'navigate') {
+    event.respondWith(fetch(req).then((res) => put(req, res)).catch(() => caches.match(req).then((r) => r || caches.match('index.html'))));
+    return;
+  }
 
-  if (isContentJson || isPhoto) {
-    event.respondWith(
-      fetch(req)
-        .then(response => {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(req, copy));
-          return response;
-        })
-        .catch(() => caches.match(req))
-    );
+  if (url.pathname.includes('/photos/web/')) {
+    event.respondWith(caches.match(req).then((hit) => hit || fetch(req).then((res) => put(req, res))));
     return;
   }
 
   event.respondWith(
-    caches.match(req)
-      .then(response => {
-        // Return cached version or fetch from network
-        return response || fetch(req);
-      }
-    )
-  );
-});
-
-// Activate event - clean up old caches
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            console.log('Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
+    caches.match(req).then((hit) => {
+      const network = fetch(req).then((res) => put(req, res)).catch(() => hit);
+      return hit || network;
     })
   );
-  self.clients.claim();
 });

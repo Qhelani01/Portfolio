@@ -2,376 +2,355 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qhelani Moyo | Student Portfolio</title>
-    <!-- Preload critical resources -->
-    <link rel="preload" href="CSS.css" as="style">
-    <link rel="preload" href="JS.js" as="script">
-    <link rel="preload" href="IMG_9375.jpg" as="image">
-    
-    <!-- Load CSS immediately -->
-    <link rel="stylesheet" href="CSS.css">
-    
-    <!-- Load fonts with display=swap for better performance -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Qhelani Moyo — Software Engineer</title>
+    <meta name="description" content="Qhelani Moyo is a software engineer and Computer Science student at West Virginia State University, building backend, full-stack and AI-powered applications.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111112" media="(prefers-color-scheme: dark)">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Qhelani Moyo — Software Engineer">
+    <meta property="og:description" content="Backend, full-stack and AI-powered projects, plus wildlife and travel photography.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <!-- Apply saved / system theme before first paint to avoid a flash -->
+    <script>
+        (function () {
+            var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', t);
+            document.documentElement.classList.add('js');
+        })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Load Font Awesome asynchronously -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Fira+Code:wght@400;500&display=swap">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Loading Indicator -->
-    <div id="loading-indicator" class="loading-indicator">
-        <div class="loading-spinner"></div>
-    </div>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+            <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></g></symbol>
+            <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></g></symbol>
+            <symbol id="i-moon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></g></symbol>
+            <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></g></symbol>
+            <symbol id="i-arrow-up" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7M12 19V5"/></g></symbol>
+            <symbol id="i-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></g></symbol>
+            <symbol id="i-external" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17 17 7"/></g></symbol>
+            <symbol id="i-chevron-down" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></g></symbol>
+            <symbol id="i-chevron-left" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></g></symbol>
+            <symbol id="i-chevron-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></g></symbol>
+            <symbol id="i-x" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></g></symbol>
+            <symbol id="i-map-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+            <symbol id="i-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></g></symbol>
+            <symbol id="i-cap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c3 3 9 3 12 0v-5M22 10v6"/></g></symbol>
+            <symbol id="i-mountain" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></g></symbol>
+            <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></g></symbol>
+            <symbol id="i-feather" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5zM16 8 2 22M17.5 15H9"/></g></symbol>
+    </svg>
 
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress" id="scroll-progress"></div>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
 
-        <!-- Scroll Progress Indicator -->
-        <div class="scroll-progress" id="scroll-progress"></div>
-
-        <!-- Dark Mode Toggle -->
-        <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
-            <i class="fas fa-moon" id="theme-icon"></i>
-        </button>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="#home">QM</a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
+    <header class="navbar">
+        <nav class="nav-container" aria-label="Primary">
+            <a href="#home" class="nav-logo" aria-label="Qhelani Moyo, home">QM</a>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#photography" class="nav-link">Photography</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="nav-actions">
+                <button type="button" class="icon-btn theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+                    <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+                </button>
+                <button type="button" class="icon-btn nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Open menu">
+                    <span class="bar"></span><span class="bar"></span>
+                </button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
+    <main id="main">
+        <!-- Hero -->
+        <section id="home" class="hero">
             <div class="hero-content">
-                <div class="hero-image">
-                    <img src="IMG_9375.jpg" alt="Qhelani Moyo" class="profile-img">
-                </div>
+                <img src="photos/web/profile-240.webp"
+                     srcset="photos/web/profile-240.webp 240w, photos/web/profile-480.webp 480w"
+                     sizes="168px" width="168" height="168"
+                     alt="Portrait of Qhelani Moyo" class="profile-img" fetchpriority="high">
                 <h1 class="hero-title">
                     <span class="greeting">Hello, I'm</span>
                     <span class="name">Qhelani Moyo</span>
-                    <span class="title" id="typing-text">Software Engineer</span>
+                    <span class="role">
+                        <span class="sr-only">Software Engineer</span>
+                        <span id="typing-text" aria-hidden="true"
+                              data-words='["Software Engineer","AI Engineer","Backend Developer","Full-Stack Developer"]'>Software Engineer</span>
+                    </span>
                 </h1>
-                <p class="hero-subtitle">Building intelligent systems and AI-powered solutions to solve complex problems</p>
-                <div class="scroll-indicator">
-                    <span>Scroll to explore</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
+                <p class="hero-subtitle">Building intelligent systems and AI-powered solutions to solve real problems.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="#projects" class="btn btn-secondary">View My Work</a>
+                    <a href="#projects" class="btn btn-primary">View my work <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+                    <a href="#contact" class="btn btn-secondary">Get in touch</a>
                 </div>
                 <div class="social-links">
-                    <a href="https://github.com/Qhelani01" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
+                    <a href="https://github.com/Qhelani01" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
                     </a>
-                    <a href="https://linkedin.com/in/qhelani-moyo" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i>
+                    <a href="https://linkedin.com/in/qhelani-moyo" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/qhelani_moyo/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+                        <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
+            <a href="#about" class="scroll-indicator" aria-label="Scroll to About section">
+                <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+            </a>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <div class="code-snippet">
-                        <div class="code-header">
-                            <span class="code-dot"></span>
-                            <span class="code-dot"></span>
-                            <span class="code-dot"></span>
-                            <span class="code-title">about.js</span>
-                        </div>
-                        <div class="code-content">
-                            <pre><code><span class="code-keyword">const</span> <span class="code-variable">aboutMe</span> = {
-  <span class="code-property">name</span>: <span class="code-string">'Qhelani Moyo'</span>,
-  <span class="code-property">role</span>: <span class="code-string">'Software Engineer & AI Research Assistant'</span>,
-  <span class="code-property">education</span>: <span class="code-string">'Computer Science @ WVSU'</span>,
-  <span class="code-property">focus</span>: <span class="code-string">'AI, Backend & Full-Stack Development'</span>
-};</code></pre>
-                        </div>
-                    </div>
-                    <p class="about-description">
-                        Hi! I'm Qhelani, a Computer Science student at West Virginia State University with a focus on backend and full-stack development. I'm passionate about solving everyday problems with technology, and that interest has grown as I have started working more with AI.
-                    </p>
-                    <div class="about-details">
+        <!-- About -->
+        <section id="about" class="section">
+            <div class="container">
+                <header class="section-header reveal">
+                    <p class="eyebrow">Who I am</p>
+                    <h2 class="section-title">About Me</h2>
+                </header>
+                <div class="about-grid">
+                    <div class="about-text reveal">
+                        <p class="lead">
+                            Hi! I'm Qhelani, a Computer Science student at West Virginia State University with a focus on backend and full-stack development. I'm passionate about solving everyday problems with technology, and that interest has grown as I have started working more with AI.
+                        </p>
                         <div class="about-item">
-                            <i class="fas fa-graduation-cap"></i>
+                            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-cap"/></svg></span>
                             <div>
                                 <strong>Education</strong>
-                                <p>Computer Science student at West Virginia State University</p>
+                                <p>B.S. Computer Science, West Virginia State University</p>
                             </div>
                         </div>
                     </div>
-                    <div class="skills">
-                        <h3>Skills & Technologies</h3>
-                        <div class="skills-categories">
-                            <div class="skill-category">
-                                <h4>Languages</h4>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">Python</span>
-                                    <span class="skill-tag">Java</span>
-                                    <span class="skill-tag">C++</span>
-                                    <span class="skill-tag">JavaScript</span>
-                                    <span class="skill-tag">HTML</span>
-                                    <span class="skill-tag">CSS</span>
-                                    <span class="skill-tag">Swift</span>
-                                    <span class="skill-tag">SQL</span>
-                                </div>
-                            </div>
-                            <div class="skill-category">
-                                <h4>Core Skills</h4>
-                                <div class="skill-tags">
-                                    <span class="skill-tag">AI Integration</span>
-                                    <span class="skill-tag">Prompt Engineering</span>
-                                    <span class="skill-tag">SQL Optimization</span>
-                                    <span class="skill-tag">Model Benchmarking</span>
-                                    <span class="skill-tag">Data Pipelines</span>
-                                </div>
-                            </div>
+                    <div class="code-snippet reveal" aria-label="About me as a JavaScript object">
+                        <div class="code-header" aria-hidden="true">
+                            <span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span>
+                            <span class="code-title">about.js</span>
                         </div>
+<pre class="code-content"><code><span class="tok-k">const</span> <span class="tok-v">aboutMe</span> = {
+  <span class="tok-p">name</span>: <span class="tok-s">'Qhelani Moyo'</span>,
+  <span class="tok-p">role</span>: <span class="tok-s">'Software Engineer &amp; AI Research Assistant'</span>,
+  <span class="tok-p">education</span>: <span class="tok-s">'Computer Science @ WVSU'</span>,
+  <span class="tok-p">focus</span>: [<span class="tok-s">'AI'</span>, <span class="tok-s">'Backend'</span>, <span class="tok-s">'Full-Stack'</span>],
+};</code></pre>
+                    </div>
+                </div>
+
+                <div class="skills reveal">
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <ul class="tag-list">
+                            <li class="tag">Python</li>
+                            <li class="tag">Java</li>
+                            <li class="tag">C++</li>
+                            <li class="tag">JavaScript</li>
+                            <li class="tag">SQL</li>
+                            <li class="tag">Swift</li>
+                            <li class="tag">HTML</li>
+                            <li class="tag">CSS</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Core Skills</h3>
+                        <ul class="tag-list">
+                            <li class="tag">AI Integration</li>
+                            <li class="tag">Prompt Engineering</li>
+                            <li class="tag">SQL Optimization</li>
+                            <li class="tag">Model Benchmarking</li>
+                            <li class="tag">Data Pipelines</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card" data-project-url="https://campus-climb.vercel.app/">
-                    <div class="project-image">
-                        <div class="project-image-placeholder">
-                            <i class="fas fa-laptop-code" aria-hidden="true"></i>
+        <!-- Projects -->
+        <section id="projects" class="section section--alt">
+            <div class="container">
+                <header class="section-header reveal">
+                    <p class="eyebrow">Selected work</p>
+                    <h2 class="section-title">Projects</h2>
+                </header>
+                <div class="projects-grid">
+                    <article class="project-card reveal">
+                        <div class="project-head">
+                            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-mountain"/></svg></span>
+                            <h3 class="project-title">
+                                <a href="https://campus-climb.vercel.app/" target="_blank" rel="noopener" class="stretched-link">Campus Climb</a>
+                            </h3>
+                            <svg class="icon project-arrow" aria-hidden="true"><use href="#i-external"/></svg>
                         </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Campus Climb</h3>
-                        <div class="project-body">
-                            <p class="project-hook">Helps WVSU students discover internships, events, and programs in one place—instead of digging through scattered sites and social feeds.</p>
-                            <div class="project-metrics" aria-label="Key metrics">
-                                <span class="project-metric">300+ listings</span>
-                                <span class="project-metric">75% satisfaction</span>
-                                <span class="project-metric">60–80% fewer bad matches</span>
-                            </div>
-                            <ul class="project-highlights">
-                                <li>Flask backend with PostgreSQL aggregating listings from multiple sources.</li>
-                                <li>Ollama + LLM pipeline filters noisy Reddit posts before they reach the feed.</li>
-                                <li>Full stack: Flask API plus HTML, CSS, and JavaScript frontend.</li>
-                            </ul>
-                        </div>
-                        <div class="project-tech">
-                          <span class="tech-tag">Python</span>
-                          <span class="tech-tag">Flask</span>
-                          <span class="tech-tag">PostgreSQL</span>
-                          <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
+                        <p class="project-hook">Helps WVSU students discover internships, events, and programs in one place, instead of digging through scattered sites and social feeds.</p>
+                        <ul class="project-metrics" aria-label="Key metrics">
+                            <li>300+ listings</li>
+                            <li>75% satisfaction</li>
+                            <li>60–80% fewer bad matches</li>
+                        </ul>
+                        <ul class="project-highlights">
+                            <li>Flask backend with PostgreSQL aggregating listings from multiple sources.</li>
+                            <li>Ollama + LLM pipeline filters noisy Reddit posts before they reach the feed.</li>
+                            <li>Full stack: Flask API plus HTML, CSS, and JavaScript frontend.</li>
+                        </ul>
+                        <ul class="tag-list tag-list--sm" aria-label="Technologies">
+                            <li class="tag">Python</li>
+                            <li class="tag">Flask</li>
+                            <li class="tag">PostgreSQL</li>
+                            <li class="tag">Ollama</li>
+                            <li class="tag">JavaScript</li>
+                        </ul>
                         <div class="project-links">
-                            <a href="https://github.com/Qhelani01" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
+                            <a href="https://campus-climb.vercel.app/" target="_blank" rel="noopener" class="project-link">Live demo <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+                            <a href="https://github.com/Qhelani01" target="_blank" rel="noopener" class="project-link"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Code</a>
                         </div>
-                    </div>
-                </div>
+                    </article>
 
-                <div class="project-card" data-project-url="https://phish-guardian-nine.vercel.app/">
-                    <div class="project-image">
-                        <div class="project-image-placeholder">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                    <article class="project-card reveal">
+                        <div class="project-head">
+                            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+                            <h3 class="project-title">
+                                <a href="https://phish-guardian-nine.vercel.app/" target="_blank" rel="noopener" class="stretched-link">Phish Guardian</a>
+                            </h3>
+                            <svg class="icon project-arrow" aria-hidden="true"><use href="#i-external"/></svg>
                         </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Phish Guardian</h3>
-                        <div class="project-body">
-                            <p class="project-hook">Check whether a link looks suspicious before you click—see results fast and look back at what you’ve already scanned.</p>
-                            <div class="project-metrics" aria-label="Key metrics">
-                                <span class="project-metric">Instant checks</span>
-                                <span class="project-metric">Scan history</span>
-                                <span class="project-metric">VirusTotal-backed</span>
-                            </div>
-                            <ul class="project-highlights">
-                                <li>Node.js service with REST endpoints for sign-in, URL scanning, and history.</li>
-                                <li>VirusTotal API integration for threat intelligence and clear results.</li>
-                                <li>Refactor reduced duplicate backend logic by ~35% for easier maintenance.</li>
-                            </ul>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">REST APIs</span>
-                            <span class="tech-tag">API Integration</span>
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                        </div>
+                        <p class="project-hook">Check whether a link looks suspicious before you click. See results fast and look back at what you’ve already scanned.</p>
+                        <ul class="project-metrics" aria-label="Key metrics">
+                            <li>Instant checks</li>
+                            <li>Scan history</li>
+                            <li>VirusTotal-backed</li>
+                        </ul>
+                        <ul class="project-highlights">
+                            <li>Node.js service with REST endpoints for sign-in, URL scanning, and history.</li>
+                            <li>VirusTotal API integration for threat intelligence and clear results.</li>
+                            <li>Refactor reduced duplicate backend logic by ~35% for easier maintenance.</li>
+                        </ul>
+                        <ul class="tag-list tag-list--sm" aria-label="Technologies">
+                            <li class="tag">JavaScript</li>
+                            <li class="tag">Node.js</li>
+                            <li class="tag">REST APIs</li>
+                            <li class="tag">VirusTotal API</li>
+                        </ul>
                         <div class="project-links">
-                            <a href="https://github.com/Qhelani01" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
+                            <a href="https://phish-guardian-nine.vercel.app/" target="_blank" rel="noopener" class="project-link">Live demo <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+                            <a href="https://github.com/Qhelani01" target="_blank" rel="noopener" class="project-link"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Code</a>
                         </div>
-                    </div>
-                </div>
+                    </article>
 
-                <div class="project-card" data-project-url="https://flycatcher-web-app.onrender.com/">
-                    <div class="project-image">
-                        <div class="project-image-placeholder">
-                            <i class="fas fa-code" aria-hidden="true"></i>
+                    <article class="project-card reveal">
+                        <div class="project-head">
+                            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-feather"/></svg></span>
+                            <h3 class="project-title">
+                                <a href="https://flycatcher-web-app.onrender.com/" target="_blank" rel="noopener" class="stretched-link">Flycatcher</a>
+                            </h3>
+                            <svg class="icon project-arrow" aria-hidden="true"><use href="#i-external"/></svg>
                         </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Flycatcher App</h3>
-                        <div class="project-body">
-                            <p class="project-hook">Explore bird sightings on a live map—useful for spotting migration patterns and what’s being seen near you.</p>
-                            <div class="project-metrics" aria-label="Key metrics">
-                                <span class="project-metric">1,000+ sightings</span>
-                                <span class="project-metric">40% faster loads</span>
-                                <span class="project-metric">Live map</span>
-                            </div>
-                            <ul class="project-highlights">
-                                <li>Flask backend with eBird API data and Google Maps visualization.</li>
-                                <li>Demo-mode caching to speed up repeat visits and iteration.</li>
-                                <li>Python server plus HTML, CSS, and JavaScript for the UI.</li>
-                            </ul>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">Google Maps API</span>
-                            <span class="tech-tag">API Integration</span>
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
+                        <p class="project-hook">Explore bird sightings on a live map, useful for spotting migration patterns and what’s being seen near you.</p>
+                        <ul class="project-metrics" aria-label="Key metrics">
+                            <li>1,000+ sightings</li>
+                            <li>40% faster loads</li>
+                            <li>Live map</li>
+                        </ul>
+                        <ul class="project-highlights">
+                            <li>Flask backend with eBird API data and Google Maps visualization.</li>
+                            <li>Demo-mode caching to speed up repeat visits and iteration.</li>
+                            <li>Python server plus HTML, CSS, and JavaScript for the UI.</li>
+                        </ul>
+                        <ul class="tag-list tag-list--sm" aria-label="Technologies">
+                            <li class="tag">Python</li>
+                            <li class="tag">Flask</li>
+                            <li class="tag">eBird API</li>
+                            <li class="tag">Google Maps API</li>
+                        </ul>
                         <div class="project-links">
-                            <a href="https://github.com/Qhelani01" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i> View Code
-                            </a>
+                            <a href="https://flycatcher-web-app.onrender.com/" target="_blank" rel="noopener" class="project-link">Live demo <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
+                            <a href="https://github.com/Qhelani01" target="_blank" rel="noopener" class="project-link"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Code</a>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Photography Section -->
-    <section id="photography" class="section">
-        <div class="container">
-            <h2 class="section-title">Through My Lens</h2>
-            <p class="photography-intro">
-                Capturing the beauty of nature, one moment at a time. Here are some of my favorite shots from my adventures in hiking and travel.
-                Follow <a href="https://www.instagram.com/qhelani_moyo/" target="_blank" class="instagram-link-inline">@qhelani_moyo</a> on Instagram for daily updates.
-            </p>
+        <!-- Photography -->
+        <section id="photography" class="section">
+            <div class="container">
+                <header class="section-header reveal">
+                    <p class="eyebrow">Photography</p>
+                    <h2 class="section-title">Through My Lens</h2>
+                    <p class="section-intro">
+                        Capturing the beauty of nature, one moment at a time: some favorite shots from hiking and travel.
+                        Follow <a href="https://www.instagram.com/qhelani_moyo/" target="_blank" rel="noopener" class="text-link">@qhelani_moyo</a> for more.
+                    </p>
+                </header>
 
-            <div class="photography-gallery" id="through-my-lens-gallery"></div>
+                <!-- Rendered from content.js -->
+                <div class="photo-grid" id="lens-gallery"></div>
 
-            <div class="photography-cta">
-                <p class="cta-text">Want to see more?</p>
-                <div class="photography-cta-buttons">
+                <div class="photo-cta reveal">
                     <a href="photography.html" class="btn btn-primary">
-                        <i class="fas fa-images"></i> Explore More
+                        <svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg> Explore the gallery
                     </a>
-                    <a href="https://www.instagram.com/qhelani_moyo/" target="_blank" class="btn btn-secondary">
-                        <i class="fab fa-instagram"></i> Follow @qhelani_moyo
+                    <a href="https://www.instagram.com/qhelani_moyo/" target="_blank" rel="noopener" class="btn btn-secondary">
+                        <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg> Instagram
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <div class="contact-content">
-                <p class="contact-description">
-                    I'm always interested in new opportunities and collaborations. 
-                    Feel free to reach out if you'd like to work together or just say hello!
-                </p>
+        <!-- Contact -->
+        <section id="contact" class="section section--alt">
+            <div class="container">
+                <header class="section-header reveal">
+                    <p class="eyebrow">Contact</p>
+                    <h2 class="section-title">Let's Connect</h2>
+                    <p class="section-intro">
+                        I'm always interested in new opportunities and collaborations.
+                        Feel free to reach out if you'd like to work together or just say hello!
+                    </p>
+                </header>
                 <div class="contact-cards">
-                    <a href="https://github.com/Qhelani01" target="_blank" class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <h3>GitHub</h3>
-                        <p>View my repositories and code projects</p>
+                    <a href="mailto:qhelanimoyoe@gmail.com" class="contact-card reveal">
+                        <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+                        <span class="contact-text"><strong>Email</strong><span>Say hello</span></span>
+                        <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
                     </a>
-
-                    <a href="https://linkedin.com/in/qhelani-moyo" target="_blank" class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <h3>LinkedIn</h3>
-                        <p>Connect with me professionally</p>
+                    <a href="https://linkedin.com/in/qhelani-moyo" target="_blank" rel="noopener" class="contact-card reveal">
+                        <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></span>
+                        <span class="contact-text"><strong>LinkedIn</strong><span>Connect professionally</span></span>
+                        <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
                     </a>
-
-                    <a href="mailto:qhelanimoyoe@gmail.com" class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h3>Email</h3>
-                        <p>Get in touch via email</p>
+                    <a href="https://github.com/Qhelani01" target="_blank" rel="noopener" class="contact-card reveal">
+                        <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></span>
+                        <span class="contact-text"><strong>GitHub</strong><span>Browse my code</span></span>
+                        <svg class="icon contact-arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg>
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Qhelani Moyo. All rights reserved.</p>
+        <div class="container footer-inner">
+            <p>&copy; <span class="year">2026</span> Qhelani Moyo</p>
+            <a href="#home" class="text-link">Back to top</a>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
+    <button type="button" class="icon-btn back-to-top" aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
     </button>
 
-    <script src="JS.js" defer></script>
-    
-    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(registrationError => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
-            });
-        }
-    </script>
+    <script src="content.js" defer></script>
+    <script src="main.js" defer></script>
 </body>
 </html>
-
