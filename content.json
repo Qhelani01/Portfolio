@@ -1,9 +1,57 @@
 {
+  "throughMyLens": [
+    {
+      "image": "photos/seattle-sunset.jpg",
+      "title": "Seattle Golden Hour",
+      "story": "Captured this stunning sunset over Seattle's skyline during my travels. The way the golden light reflected off the buildings and painted the sky in warm hues was absolutely mesmerizing.",
+      "location": "Seattle, WA",
+      "date": "Recent Travel"
+    },
+    {
+      "image": "photos/golden-gate.jpg",
+      "focus": "center 20%",
+      "title": "Iconic Golden Gate",
+      "story": "Standing before the magnificent Golden Gate Bridge was a dream come true. The fog rolling in from the Pacific created this dramatic scene, with the bridge's iconic orange-red color contrasting beautifully against the misty backdrop.",
+      "location": "San Francisco, CA",
+      "date": "Recent Travel"
+    },
+    {
+      "image": "photos/zambezi-river.jpg",
+      "focus": "center 80%",
+      "title": "Zambezi River Serenity",
+      "story": "The Zambezi River flows with such peaceful grace through the African landscape. This moment captured the river's gentle curves and the golden light reflecting off its surface.",
+      "location": "Zambezi River",
+      "date": "Recent Travel"
+    },
+    {
+      "image": "photos/california-quail.jpg",
+      "focus": "center 95%",
+      "title": "California Quail Encounter",
+      "story": "This beautiful California Quail was spotted during a peaceful hike in Point Reyes. These birds are known for their distinctive topknot and gentle nature.",
+      "location": "Point Reyes, CA",
+      "date": "Recent Hike"
+    },
+    {
+      "image": "photos/ellie.jpg",
+      "focus": "center 70%",
+      "title": "Elephant Road Encounter",
+      "story": "This magnificent elephant was casually walking down the road in Victoria Falls, Zimbabwe. It was incredible to witness such a powerful animal moving with such grace and confidence.",
+      "location": "Victoria Falls, Zimbabwe",
+      "date": "Recent Travel"
+    },
+    {
+      "image": "photos/safari.jpg",
+      "title": "Safari Adventure",
+      "story": "This incredible safari moment captured the essence of African wildlife in its natural habitat. The vast landscape, the golden light, and the sense of adventure made this one of the most memorable experiences.",
+      "location": "Chobe National Park, Botswana",
+      "date": "Recent Travel"
+    }
+  ],
   "photography": {
     "locations": [
       {
         "id": "united-states",
-        "title": "UNITED STATES",
+        "title": "United States",
         "hero": "photos/united-states/seattle-hero.jpg",
         "images": [
           "photos/united-states/pelican.jpg",
@@ -16,7 +64,7 @@
       },
       {
         "id": "botswana",
-        "title": "BOTSWANA",
+        "title": "Botswana",
         "hero": "photos/botswana/lioness-hero.jpg",
         "images": [
           "photos/botswana/lion-hunt.jpg",
@@ -31,7 +79,7 @@
       },
       {
         "id": "zimbabwe",
-        "title": "ZIMBABWE",
+        "title": "Zimbabwe",
         "hero": "photos/zimbabwe/zambezi.jpg",
         "images": [
           "photos/zimbabwe/weaver.jpg",
@@ -40,49 +88,5 @@
         ]
       }
     ]
-  },
-  "throughMyLens": [
-    {
-      "image": "photos/seattle-sunset.jpg",
-      "title": "Seattle Golden Hour",
-      "story": "Captured this stunning sunset over Seattle's skyline during my travels. The way the golden light reflected off the buildings and painted the sky in warm hues was absolutely mesmerizing.",
-      "location": "Seattle, WA",
-      "date": "Recent Travel"
-    },
-    {
-      "image": "photos/golden-gate.jpg",
-      "title": "Iconic Golden Gate",
-      "story": "Standing before the magnificent Golden Gate Bridge was a dream come true. The fog rolling in from the Pacific created this dramatic scene, with the bridge's iconic orange-red color contrasting beautifully against the misty backdrop.",
-      "location": "San Francisco, CA",
-      "date": "Recent Travel"
-    },
-    {
-      "image": "photos/zambezi-river.jpg",
-      "title": "Zambezi River Serenity",
-      "story": "The Zambezi River flows with such peaceful grace through the African landscape. This moment captured the river's gentle curves and the golden light reflecting off its surface.",
-      "location": "Zambezi River",
-      "date": "Recent Travel"
-    },
-    {
-      "image": "photos/california-quail.jpg",
-      "title": "California Quail Encounter",
-      "story": "This beautiful California Quail was spotted during a peaceful hike in Point Reyes. These birds are known for their distinctive topknot and gentle nature.",
-      "location": "Point Reyes, CA",
-      "date": "Recent Hike"
-    },
-    {
-      "image": "photos/ellie.jpg",
-      "title": "Elephant Road Encounter",
-      "story": "This magnificent elephant was casually walking down the road in Victoria Falls, Zimbabwe. It was incredible to witness such a powerful animal moving with such grace and confidence.",
-      "location": "Victoria Falls, Zimbabwe",
-      "date": "Recent Travel"
-    },
-    {
-      "image": "photos/safari.jpg",
-      "title": "Safari Adventure",
-      "story": "This incredible safari moment captured the essence of African wildlife in its natural habitat. The vast landscape, the golden light, and the sense of adventure made this one of the most memorable experiences.",
-      "location": "Chobe National Park, Botswana",
-      "date": "Recent Travel"
-    }
-  ]
+  }
 }

@@ -2,104 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Through My Lens — Photography | Qhelani Moyo</title>
-    <link rel="preload" href="CSS.css" as="style">
-    <link rel="preload" href="JS.js" as="script">
-    <link rel="stylesheet" href="CSS.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photography — Qhelani Moyo</title>
+    <meta name="description" content="Wildlife and landscape photography by Qhelani Moyo from the United States, Botswana and Zimbabwe.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111112" media="(prefers-color-scheme: dark)">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Photography — Qhelani Moyo">
+    <meta property="og:description" content="Wildlife and landscape photography from the United States, Botswana and Zimbabwe.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <script>
+        (function () {
+            var t; try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', t);
+            document.documentElement.classList.add('js');
+        })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&family=Fira+Code:wght@400;500&display=swap">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="page-photography">
-    <div class="scroll-progress" id="scroll-progress"></div>
-    <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon" id="theme-icon"></i>
-    </button>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">QM</a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html#home" class="nav-link">Home</a></li>
+<body class="page-photography">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+            <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></g></symbol>
+            <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></g></symbol>
+            <symbol id="i-moon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></g></symbol>
+            <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></g></symbol>
+            <symbol id="i-arrow-up" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7M12 19V5"/></g></symbol>
+            <symbol id="i-arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></g></symbol>
+            <symbol id="i-external" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17 17 7"/></g></symbol>
+            <symbol id="i-chevron-down" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></g></symbol>
+            <symbol id="i-chevron-left" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></g></symbol>
+            <symbol id="i-chevron-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></g></symbol>
+            <symbol id="i-x" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></g></symbol>
+            <symbol id="i-map-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+            <symbol id="i-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></g></symbol>
+            <symbol id="i-cap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c3 3 9 3 12 0v-5M22 10v6"/></g></symbol>
+            <symbol id="i-mountain" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></g></symbol>
+            <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></g></symbol>
+            <symbol id="i-feather" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5zM16 8 2 22M17.5 15H9"/></g></symbol>
+    </svg>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <header class="navbar">
+        <nav class="nav-container" aria-label="Primary">
+            <a href="index.html" class="nav-logo" aria-label="Qhelani Moyo, home">QM</a>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html#about" class="nav-link">About</a></li>
                 <li><a href="index.html#projects" class="nav-link">Projects</a></li>
-                <li><a href="photography.html" class="nav-link">Photography</a></li>
+                <li><a href="photography.html" class="nav-link active" aria-current="page">Photography</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="nav-actions">
+                <button type="button" class="icon-btn theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+                    <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+                </button>
+                <button type="button" class="icon-btn nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Open menu">
+                    <span class="bar"></span><span class="bar"></span>
+                </button>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <main class="photography-page-main">
-        <section class="photography-fullpage">
-            <!-- Hero: landscape + location name overlay (Felix Rome style) -->
-            <div class="photography-hero-banner" id="photography-hero-banner">
-                <img class="photography-hero-img" id="photography-hero-img" src="https://placehold.co/1600x600/f5f5f7/86868b?text=United+States+Landscape" alt="">
-                <h1 class="photography-hero-location" id="photography-hero-title">UNITED STATES</h1>
-            </div>
-
-            <!-- Clickable location links (the other two locations) -->
-            <nav class="photography-location-links" aria-label="View other locations">
-                <a href="#botswana" class="photography-location-link" data-location="botswana">BOTSWANA</a>
-                <a href="#zimbabwe" class="photography-location-link" data-location="zimbabwe">ZIMBABWE</a>
-            </nav>
-
-            <!-- Grid: 4 photos per row (populated from content.json) -->
-            <div class="photography-fullpage-content">
-                <div class="photography-grid photography-grid--4col photography-grid-visible" data-location="united-states" id="grid-united-states"></div>
-                <div class="photography-grid photography-grid--4col" data-location="botswana" id="grid-botswana" hidden></div>
-                <div class="photography-grid photography-grid--4col" data-location="zimbabwe" id="grid-zimbabwe" hidden></div>
-            </div>
-
-            <div class="photography-fullpage-content photography-cta--page-wrap">
-                <div class="photography-cta photography-cta--page">
-                    <a href="index.html#photography" class="btn btn-secondary">
-                        <i class="fas fa-arrow-left"></i> Back to Portfolio
-                    </a>
-                </div>
+    <main id="main">
+        <section class="ph-hero">
+            <img class="ph-hero-img" id="ph-hero-img" alt="" sizes="100vw" fetchpriority="high">
+            <div class="ph-hero-text">
+                <p class="eyebrow eyebrow--light">Through My Lens</p>
+                <h1 class="ph-hero-title" id="ph-hero-title">Photography</h1>
             </div>
         </section>
+
+        <div class="container">
+            <div class="ph-tabs" id="ph-tabs" role="tablist" aria-label="Locations"></div>
+            <div class="ph-grid" id="ph-grid" role="tabpanel"></div>
+
+            <div class="photo-cta">
+                <a href="index.html#photography" class="btn btn-secondary">
+                    <svg class="icon flip" aria-hidden="true"><use href="#i-arrow-right"/></svg> Back to portfolio
+                </a>
+                <a href="https://www.instagram.com/qhelani_moyo/" target="_blank" rel="noopener" class="btn btn-primary">
+                    <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg> Follow @qhelani_moyo
+                </a>
+            </div>
+        </div>
     </main>
 
-    <!-- Lightbox: full photo view with prev/next -->
-    <div id="photography-lightbox" class="photography-lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
-        <button type="button" class="photography-lightbox-close" id="photography-lightbox-close" aria-label="Close">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="photography-lightbox-inner">
-            <button type="button" class="photography-lightbox-arrow photography-lightbox-prev" id="photography-lightbox-prev" aria-label="Previous photo">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <div class="photography-lightbox-image-wrap" id="photography-lightbox-image-wrap">
-                <span class="photography-lightbox-zone photography-lightbox-zone-left" id="photography-lightbox-zone-left" aria-hidden="true"></span>
-                <img id="photography-lightbox-img" src="" alt="" class="photography-lightbox-img">
-                <span class="photography-lightbox-zone photography-lightbox-zone-right" id="photography-lightbox-zone-right" aria-hidden="true"></span>
-            </div>
-            <button type="button" class="photography-lightbox-arrow photography-lightbox-next" id="photography-lightbox-next" aria-label="Next photo">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-    </div>
-
     <footer class="footer">
-        <div class="container">
-            <p>&copy; <span id="footer-year"></span> Qhelani Moyo. All rights reserved.</p>
+        <div class="container footer-inner">
+            <p>&copy; <span class="year">2026</span> Qhelani Moyo</p>
+            <a href="index.html" class="text-link">Home</a>
         </div>
     </footer>
 
-    <script src="JS.js" defer></script>
+    <button type="button" class="icon-btn back-to-top" aria-label="Back to top">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+    </button>
+
+    <script src="content.js" defer></script>
+    <script src="main.js" defer></script>
     <script src="photography.js" defer></script>
-    <script>
-        document.getElementById('footer-year').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>
