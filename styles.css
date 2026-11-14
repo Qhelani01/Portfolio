@@ -402,9 +402,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* Shared card surface */
 .card,
-.about-item,
-.code-snippet,
-.skill-category,
 .project-card,
 .experience-card,
 .contact-card {
@@ -425,78 +422,75 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 .icon-tile .icon { width: 22px; height: 22px; }
 
-/* Tags */
-.tag-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.tag {
-  padding: 0.35rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  font-family: var(--mono);
-  font-size: 0.82rem;
-  color: var(--text);
-}
-
 /* ---------- About ---------- */
-.about-grid {
+#about { padding-top: clamp(3.75rem, 8.2vw, 6.25rem); } /* ~17% less than other sections */
+/* Editorial, asymmetric: large intro on the left, skills as quiet text rows on the right. */
+.about-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
   align-items: start;
+  max-width: 1060px;
+  margin: 0 auto;
 }
-.about-text { display: flex; flex-direction: column; gap: 1.5rem; }
-.lead { font-size: 1.15rem; line-height: 1.75; color: var(--text); }
 
-.about-item { display: flex; gap: 1rem; align-items: center; padding: 1.1rem 1.25rem; }
-.about-item strong { display: block; font-weight: 600; }
-.about-item p { font-size: 0.95rem; }
+.about-intro {
+  font-size: clamp(1.2rem, 2.1vw, 1.5rem);
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  text-wrap: pretty;
+}
 
-.code-snippet { overflow: hidden; box-shadow: var(--shadow-sm); }
-.code-header {
+.about-edu {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-alt);
+  gap: 0.9rem;
+  margin-top: 2rem;
 }
-.code-dot { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; }
-.code-dot:nth-child(2) { background: #febc2e; }
-.code-dot:nth-child(3) { background: #28c840; }
-.code-title { margin-left: auto; font-family: var(--mono); font-size: 0.8rem; color: var(--text-2); }
-.code-content {
-  padding: 1.25rem 1.4rem;
-  overflow-x: auto;
-  font-family: var(--mono);
-  font-size: 0.875rem;
-  line-height: 1.75;
-  color: var(--text);
+.about-edu-degree { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; }
+.about-edu-meta { font-size: 0.92rem; }
+.about-edu-date { white-space: nowrap; }
+@media (max-width: 560px) {
+  .about-edu-sep { display: none; }
+  .about-edu-date { display: block; }
 }
-.tok-k { color: var(--accent-fg); font-weight: 500; }
-.tok-v { color: var(--text); }
-.tok-p { color: var(--text-2); }
-.tok-s { color: #8a6d3b; }
-[data-theme="dark"] .tok-s { color: #e0b97a; }
 
-.skills {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+.about-skills {
+  padding-left: clamp(1.5rem, 3vw, 2.5rem);
+  border-left: 1px solid var(--border);
 }
-.skill-category { padding: 1.5rem; }
-.skill-category h3 {
+.about-label,
+.skill-row dt {
   font-family: var(--mono);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--text-2);
-  margin-bottom: 1rem;
+}
+.about-label { color: var(--accent-fg); margin-bottom: 0.5rem; }
+
+.skill-rows { margin: 0; }
+.skill-row {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.skill-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.skill-row dd { margin: 0; }
+.skill-items { display: flex; flex-wrap: wrap; font-size: 0.95rem; color: var(--text); }
+.skill-items li { white-space: nowrap; }
+.skill-items li:not(:last-child)::after { content: '·'; margin: 0 0.55rem; color: var(--text-2); }
+@media (max-width: 560px) {
+  .skill-items { font-size: 1rem; line-height: 1.7; } /* comfortable reading size on phones */
+  .skill-items li:not(:last-child)::after { margin: 0 0.4rem; }
 }
 
-@media (max-width: 860px) {
-  .about-grid, .skills { grid-template-columns: 1fr; }
+@media (max-width: 1023px) {
+  .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-skills { padding-left: 0; padding-top: 2rem; border-left: 0; border-top: 1px solid var(--border); }
 }
 
 /* ---------- Experience ---------- */
@@ -955,7 +949,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 @media (max-width: 560px) {
   .hero-buttons { flex-direction: column; width: 100%; max-width: 280px; }
   .profile-img { width: 132px; height: 132px; }
-  .code-content { font-size: 0.78rem; padding: 1rem; }
   .footer-inner { justify-content: center; text-align: center; }
 }
 
