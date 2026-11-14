@@ -48,7 +48,7 @@
             <symbol id="i-cap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c3 3 9 3 12 0v-5M22 10v6"/></g></symbol>
             <symbol id="i-mountain" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></g></symbol>
             <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></g></symbol>
-            <symbol id="i-feather" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5zM16 8 2 22M17.5 15H9"/></g></symbol>
+            <symbol id="i-scale" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1ZM2 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1ZM7 21h10M12 3v18M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></g></symbol>
     </svg>
 
     <a class="skip-link" href="#main">Skip to content</a>
@@ -245,95 +245,80 @@
                 <div class="projects-grid">
                     <article class="project-card reveal">
                         <div class="project-head">
-                            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-mountain"/></svg></span>
-                            <h3 class="project-title">
-                                <a href="https://campus-climb.vercel.app/" target="_blank" rel="noopener" class="stretched-link">Campus Climb</a>
-                            </h3>
-                            <svg class="icon project-arrow" aria-hidden="true"><use href="#i-external"/></svg>
+                            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-scale"/></svg></span>
+                            <div>
+                                <h3 class="project-title">
+                                    <a href="https://github.com/Qhelani01/arbiter" target="_blank" rel="noopener" class="stretched-link">Arbiter</a>
+                                </h3>
+                                <p class="project-subtitle">Multi-Agent AI Moderation System</p>
+                            </div>
                         </div>
-                        <p class="project-hook">Helps WVSU students discover internships, events, and programs in one place, instead of digging through scattered sites and social feeds.</p>
-                        <ul class="project-metrics" aria-label="Key metrics">
-                            <li>300+ listings</li>
-                            <li>75% satisfaction</li>
-                            <li>60–80% fewer bad matches</li>
-                        </ul>
+                        <p class="project-hook">Built a cost-aware AI moderation system that uses multi-agent debate to resolve ambiguous content decisions.</p>
                         <ul class="project-highlights">
-                            <li>Flask backend with PostgreSQL aggregating listings from multiple sources.</li>
-                            <li>Ollama + LLM pipeline filters noisy Reddit posts before they reach the feed.</li>
-                            <li>Full stack: Flask API plus HTML, CSS, and JavaScript frontend.</li>
+                            <li>Evaluated 8,000 comments across 4 moderation strategies.</li>
+                            <li>Engineered adversarial AI agents with judge-based decisions, structured outputs, and hallucination safeguards.</li>
                         </ul>
-                        <ul class="tag-list tag-list--sm" aria-label="Technologies">
-                            <li class="tag">Python</li>
-                            <li class="tag">Flask</li>
-                            <li class="tag">PostgreSQL</li>
-                            <li class="tag">Ollama</li>
-                            <li class="tag">JavaScript</li>
+                        <ul class="tech-list" aria-label="Technologies">
+                            <li>Python</li>
+                            <li>scikit-learn</li>
+                            <li>Claude API</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/Qhelani01/arbiter" target="_blank" rel="noopener" class="project-link"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-head">
+                            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-mountain"/></svg></span>
+                            <div>
+                                <h3 class="project-title">
+                                    <a href="https://campus-climb.vercel.app/" target="_blank" rel="noopener" class="stretched-link">Campus Climb</a>
+                                </h3>
+                                <p class="project-subtitle">Student Opportunities Platform</p>
+                            </div>
+                        </div>
+                        <p class="project-hook">Centralized internships, events, and campus opportunities into a searchable platform for WVSU students.</p>
+                        <ul class="project-highlights">
+                            <li>Aggregated 300+ opportunities using Flask and PostgreSQL.</li>
+                            <li>Integrated an LLM-powered filtering pipeline to improve listing relevance.</li>
+                        </ul>
+                        <ul class="tech-list" aria-label="Technologies">
+                            <li>Python</li>
+                            <li>Flask</li>
+                            <li>PostgreSQL</li>
+                            <li>Ollama</li>
                         </ul>
                         <div class="project-links">
                             <a href="https://campus-climb.vercel.app/" target="_blank" rel="noopener" class="project-link">Live demo <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
-                            <a href="https://github.com/Qhelani01" target="_blank" rel="noopener" class="project-link"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Code</a>
+                            <a href="https://github.com/Qhelani01" target="_blank" rel="noopener" class="project-link"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
                         </div>
                     </article>
 
                     <article class="project-card reveal">
                         <div class="project-head">
                             <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
-                            <h3 class="project-title">
-                                <a href="https://phish-guardian-nine.vercel.app/" target="_blank" rel="noopener" class="stretched-link">Phish Guardian</a>
-                            </h3>
-                            <svg class="icon project-arrow" aria-hidden="true"><use href="#i-external"/></svg>
+                            <div>
+                                <h3 class="project-title">
+                                    <a href="https://phish-guardian-nine.vercel.app/" target="_blank" rel="noopener" class="stretched-link">Phish Guardian</a>
+                                </h3>
+                                <p class="project-subtitle">Phishing Detection Application</p>
+                            </div>
                         </div>
-                        <p class="project-hook">Check whether a link looks suspicious before you click. See results fast and look back at what you’ve already scanned.</p>
-                        <ul class="project-metrics" aria-label="Key metrics">
-                            <li>Instant checks</li>
-                            <li>Scan history</li>
-                            <li>VirusTotal-backed</li>
-                        </ul>
+                        <p class="project-hook">Built a web application for real-time URL threat detection using the VirusTotal API.</p>
                         <ul class="project-highlights">
-                            <li>Node.js service with REST endpoints for sign-in, URL scanning, and history.</li>
-                            <li>VirusTotal API integration for threat intelligence and clear results.</li>
-                            <li>Refactor reduced duplicate backend logic by ~35% for easier maintenance.</li>
+                            <li>Developed REST APIs for authentication, URL scanning, and scan history.</li>
+                            <li>Refactored backend services, reducing duplicate code by ~35%.</li>
                         </ul>
-                        <ul class="tag-list tag-list--sm" aria-label="Technologies">
-                            <li class="tag">JavaScript</li>
-                            <li class="tag">Node.js</li>
-                            <li class="tag">REST APIs</li>
-                            <li class="tag">VirusTotal API</li>
+                        <ul class="tech-list" aria-label="Technologies">
+                            <li>JavaScript</li>
+                            <li>Node.js</li>
+                            <li>REST APIs</li>
+                            <li>VirusTotal</li>
                         </ul>
                         <div class="project-links">
                             <a href="https://phish-guardian-nine.vercel.app/" target="_blank" rel="noopener" class="project-link">Live demo <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
-                            <a href="https://github.com/Qhelani01" target="_blank" rel="noopener" class="project-link"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Code</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card reveal">
-                        <div class="project-head">
-                            <span class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-feather"/></svg></span>
-                            <h3 class="project-title">
-                                <a href="https://flycatcher-web-app.onrender.com/" target="_blank" rel="noopener" class="stretched-link">Flycatcher</a>
-                            </h3>
-                            <svg class="icon project-arrow" aria-hidden="true"><use href="#i-external"/></svg>
-                        </div>
-                        <p class="project-hook">Explore bird sightings on a live map, useful for spotting migration patterns and what’s being seen near you.</p>
-                        <ul class="project-metrics" aria-label="Key metrics">
-                            <li>1,000+ sightings</li>
-                            <li>40% faster loads</li>
-                            <li>Live map</li>
-                        </ul>
-                        <ul class="project-highlights">
-                            <li>Flask backend with eBird API data and Google Maps visualization.</li>
-                            <li>Demo-mode caching to speed up repeat visits and iteration.</li>
-                            <li>Python server plus HTML, CSS, and JavaScript for the UI.</li>
-                        </ul>
-                        <ul class="tag-list tag-list--sm" aria-label="Technologies">
-                            <li class="tag">Python</li>
-                            <li class="tag">Flask</li>
-                            <li class="tag">eBird API</li>
-                            <li class="tag">Google Maps API</li>
-                        </ul>
-                        <div class="project-links">
-                            <a href="https://flycatcher-web-app.onrender.com/" target="_blank" rel="noopener" class="project-link">Live demo <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg></a>
-                            <a href="https://github.com/Qhelani01" target="_blank" rel="noopener" class="project-link"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Code</a>
+                            <a href="https://github.com/Qhelani01" target="_blank" rel="noopener" class="project-link"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
                         </div>
                     </article>
                 </div>
