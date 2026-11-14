@@ -2,7 +2,7 @@
 // - Pages: network first, cached copy only when offline.
 // - CSS/JS/content: stale-while-revalidate (instant, refreshed in background).
 // - Generated photos (photos/web/): cache first (file names are stable per size).
-const VERSION = 'v3';
+const VERSION = 'v4';
 const CACHE = `portfolio-${VERSION}`;
 const PRECACHE = ['./', 'index.html', 'photography.html', 'styles.css', 'main.js', 'photography.js', 'content.js', 'favicon.svg'];
 
