@@ -436,7 +436,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   font-size: 0.82rem;
   color: var(--text);
 }
-.tag-list--sm .tag { font-size: 0.75rem; padding: 0.25rem 0.65rem; color: var(--text-2); background: transparent; }
 
 /* ---------- About ---------- */
 .about-grid {
@@ -604,28 +603,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 
 .project-head { display: flex; align-items: center; gap: 0.9rem; }
-.project-title { font-size: 1.3rem; }
+.project-title { font-size: 1.25rem; }
+.project-subtitle { font-size: 0.8125rem; color: var(--text-2); line-height: 1.4; margin-top: 0.15rem; }
 .stretched-link::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius); }
 .stretched-link:focus-visible { outline: none; }
-.project-arrow {
-  margin-left: auto;
-  color: var(--text-2);
-  transition: transform 0.25s var(--ease), color 0.2s;
-}
-.project-card:hover .project-arrow { color: var(--accent-fg); transform: translate(2px, -2px); }
+.project-title a { transition: color 0.2s; }
+.project-card:hover .project-title a { color: var(--accent-fg); }
 
-.project-hook { color: var(--text); font-size: 1rem; line-height: 1.6; }
-
-.project-metrics { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.project-metrics li {
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent-fg);
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-}
+.project-hook { color: var(--text); font-size: 0.975rem; line-height: 1.6; }
 
 .project-highlights { display: grid; gap: 0.55rem; }
 .project-highlights li {
@@ -646,7 +631,19 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   background: var(--accent-fg);
 }
 
-.project-card .tag-list { margin-top: auto; padding-top: 1.1rem; border-top: 1px solid var(--border); }
+/* Tech stack as one quiet line: Python · Flask · PostgreSQL */
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-2);
+}
+.tech-list li { white-space: nowrap; }
+.tech-list li:not(:last-child)::after { content: '·'; margin: 0 0.5rem; opacity: 0.7; }
 
 .project-links { display: flex; gap: 1.25rem; }
 .project-link {
